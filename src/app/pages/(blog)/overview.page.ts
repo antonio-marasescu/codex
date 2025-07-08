@@ -5,7 +5,7 @@ import { injectContentFiles } from '@analogjs/content';
 import PostAttributes from '../../post-attributes';
 
 @Component({
-  selector: 'app-blog',
+  selector: 'app-blog-overview',
   imports: [RouterLink],
   template: `
     <h1>Blog Archive</h1>
@@ -16,20 +16,8 @@ import PostAttributes from '../../post-attributes';
         <p class="post__desc">{{ post.attributes.description }}</p>
       </a>
     }
-  `,
-  styles: `
-    a {
-      text-align: left;
-      display: block;
-      margin-bottom: 2rem;
-    }
-
-    .post__title,
-    .post__desc {
-      margin: 0;
-    }
   `
 })
-export default class BlogComponent {
+export default class BlogOverviewPageComponent {
   readonly posts = injectContentFiles<PostAttributes>();
 }
