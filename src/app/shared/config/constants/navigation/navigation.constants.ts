@@ -4,16 +4,19 @@ export const NavigationItems: NavbarItem[] = [
   {
     id: NavigationItemType.Home,
     label: 'Home',
-    icon: 'home'
+    icon: 'home',
+    routerLink: '/'
   },
   {
     id: NavigationItemType.Notes,
     label: 'Notes',
-    icon: 'note'
+    icon: 'note',
+    routerLink: '/notes'
   },
   {
     id: NavigationItemType.Blog,
     label: 'Blog',
-    icon: 'article'
+    icon: 'article',
+    routerLink: '/blog'
   }
 ];

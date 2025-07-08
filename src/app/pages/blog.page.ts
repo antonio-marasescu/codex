@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-blog',
-  imports: [RouterOutlet],
+  selector: 'app-blog-layout',
+  imports: [RouterOutlet, RouterLink],
   template: `
     <div>
       <h1>Blog</h1>
-      <router-outlet></router-outlet>
+      <nav>
+        <a routerLink="/blog">Overview</a>
+      </nav>
+      <router-outlet />
     </div>
   `
 })
-export default class BlogPageComponent {}
+export default class BlogLayoutComponent {}

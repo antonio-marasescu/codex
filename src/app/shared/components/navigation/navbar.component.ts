@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ThemeSelectorComponent } from '../theming/theme-selector.component';
 import { Menubar } from 'primeng/menubar';
 import { Ripple } from 'primeng/ripple';
@@ -6,7 +7,7 @@ import { NavigationItems } from '../../config/constants/navigation/navigation.co
 
 @Component({
   selector: 'app-navbar',
-  imports: [ThemeSelectorComponent, Menubar, Ripple],
+  imports: [ThemeSelectorComponent, Menubar, Ripple, RouterLink],
   template: `
     <nav class="w-screen min-h-20 flex flex-row justify-center">
       <p-menubar [model]="NavigationItems" class="rounded-full  min-w-62 m-2">
@@ -21,6 +22,7 @@ import { NavigationItems } from '../../config/constants/navigation/navigation.co
         </ng-template>
         <ng-template #item let-item let-root="root" class="rounded-full">
           <a
+            [routerLink]="item.routerLink"
             tabindex="0"
             pRipple
             class="flex items-center p-menubar-item-link text-base bg-opacity-10"

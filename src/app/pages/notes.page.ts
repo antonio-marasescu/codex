@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-notes',
-  imports: [RouterOutlet],
+  selector: 'app-notes-layout',
+  imports: [RouterOutlet, RouterLink],
   template: `
     <div>
       <h1>Notes</h1>
-      <router-outlet></router-outlet>
+      <nav>
+        <a routerLink="/notes">Overview</a>
+      </nav>
+      <router-outlet />
     </div>
   `
 })
-export default class NotesPageComponent {}
+export default class NotesLayoutComponent {}
