@@ -18,7 +18,16 @@ export default defineConfig(({ mode }) => ({
         highlighter: 'shiki'
       },
       prerender: {
-        routes: ['/blog', '/blog/2022-12-27-my-first-post']
+        routes: [
+          '/blog/overview',
+          '/blog/getting-started-with-analogjs',
+          '/blog/why-static-site-generation',
+          '/notes/overview',
+          '/notes/cloud/aws-lambda-basics',
+          '/notes/cloud/azure-functions-overview',
+          '/notes/iac/terraform-fundamentals',
+          '/notes/investing/value-investing-principles'
+        ]
       }
     }),
     tailwindcss()

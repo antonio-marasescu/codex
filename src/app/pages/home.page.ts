@@ -39,7 +39,7 @@ import { RouterLink } from '@angular/router';
               📚 Notes
             </h2>
             <p class="text-gray-600 dark:text-gray-300 mb-4">
-              Organize your knowledge, ideas, and personal notes.
+              Organize your knowledge, ideas, and personal notes by category.
             </p>
             <a
               routerLink="/notes/overview"
