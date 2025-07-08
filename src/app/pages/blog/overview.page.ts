@@ -13,4 +13,4 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export default class BlogOverviewComponent {} 
+export default class BlogOverviewComponent {}

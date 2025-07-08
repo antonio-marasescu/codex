@@ -14,4 +14,4 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export default class NotesOverviewComponent {} 
+export default class NotesOverviewComponent {}

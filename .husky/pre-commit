@@ -1,1 +1,1 @@
-npx run prettier:check
+npm run prettier:check
