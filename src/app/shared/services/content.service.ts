@@ -35,7 +35,6 @@ export class ContentService {
             file =>
               ({
                 ...file.attributes,
-                slug: file.filename.replace('/blog/', '').replace('.md', ''),
                 content: file.content
               }) as BlogPost
           )
@@ -59,7 +58,6 @@ export class ContentService {
   }
 
   getNotes() {
-    console.log(this.contentFiles);
     return of(this.contentFiles).pipe(
       map(files =>
         files
@@ -68,7 +66,6 @@ export class ContentService {
             file =>
               ({
                 ...file.attributes,
-                slug: file.filename.replace('/notes/', '').replace('.md', ''),
                 content: file.content
               }) as Note
           )

@@ -2,7 +2,9 @@
 title: 'Why Static Site Generation Matters'
 description: 'Understanding the benefits of static site generation for modern web applications'
 publishedAt: '2024-01-20'
+slug: 'why-static-site-generation-matters'
 author: 'Your Name'
+draft: false
 tags: ['ssg', 'performance', 'seo']
 ---
 

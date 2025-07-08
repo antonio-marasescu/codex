@@ -2,7 +2,9 @@
 title: 'Getting Started with AnalogJS'
 description: 'Learn how to build modern web applications with AnalogJS'
 publishedAt: '2024-01-15'
+slug: 'getting-starter-with-analogjs'
 author: 'Your Name'
+draft: false
 tags: ['analogjs', 'angular', 'tutorial']
 ---
 
