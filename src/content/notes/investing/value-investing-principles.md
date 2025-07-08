@@ -1,5 +1,6 @@
 ---
 title: 'Value Investing Principles'
+slug: 'value-investing-principles'
 description: 'Core principles of value investing strategy'
 category: 'Investing'
 tags: ['investing', 'value', 'stocks']

@@ -1,13 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe, DatePipe } from '@angular/common';
-import { ContentService } from '../../shared/services/content.service';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs';
+import { DatePipe } from '@angular/common';
+import { NotePostsService } from '../../shared/services/note-posts.service';
 
 @Component({
   selector: 'app-notes-overview',
-  imports: [RouterLink, AsyncPipe, DatePipe],
+  imports: [RouterLink, DatePipe],
   template: `
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-6xl mx-auto">
@@ -16,9 +14,11 @@ import { map } from 'rxjs';
           Welcome to the notes section. Here you'll find all our notes organized by category.
         </p>
 
-        @if (notesData$ | async; as data) {
+        @let notes = notesByCategory();
+        @let categories = notesCategories();
+        @if (notes && categories) {
           <div class="space-y-8">
-            @for (category of data.categories; track category) {
+            @for (category of categories; track category) {
               <section
                 class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700"
               >
@@ -29,7 +29,7 @@ import { map } from 'rxjs';
                 </h2>
 
                 <div class="grid gap-4">
-                  @for (note of data.notesByCategory[category]; track note.slug) {
+                  @for (note of notes[category]; track note.slug) {
                     <article
                       class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600"
                     >
@@ -64,26 +64,13 @@ import { map } from 'rxjs';
               </section>
             }
           </div>
-        } @else {
-          <p class="text-gray-500 dark:text-gray-400">Loading notes...</p>
         }
       </div>
     </div>
   `
 })
 export default class NotesOverviewComponent {
-  private contentService = inject(ContentService);
-
-  notesData$ = combineLatest([
-    this.contentService.getNotes(),
-    this.contentService.getCategories()
-  ]).pipe(
-    map(([notes, categories]) => {
-      const notesByCategory: Record<string, any[]> = {};
-      categories.forEach(category => {
-        notesByCategory[category] = notes.filter(note => note.category === category);
-      });
-      return { notes, categories, notesByCategory };
-    })
-  );
+  private readonly notePostsService = inject(NotePostsService);
+  protected notesByCategory = this.notePostsService.getPostsByCategory();
+  protected notesCategories = this.notePostsService.getCategories();
 }

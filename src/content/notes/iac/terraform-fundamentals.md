@@ -1,5 +1,6 @@
 ---
 title: 'Terraform Fundamentals'
+slug: 'terraform-fundamentals'
 description: 'Core concepts for infrastructure as code with Terraform'
 category: 'IaC'
 tags: ['terraform', 'iac', 'infrastructure']

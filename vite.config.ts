@@ -20,8 +20,9 @@ export default defineConfig(({ mode }) => ({
       prerender: {
         routes: async () => [
           '/',
-          '/blog',
-          '/notes',
+          '/home',
+          '/blog/overview',
+          '/notes/overview',
           {
             contentDir: 'src/content/blog',
             transform: (file: PrerenderContentFile) => {
@@ -29,7 +30,6 @@ export default defineConfig(({ mode }) => ({
                 return false;
               }
               const slug = file.attributes['slug'] || file.name;
-              console.log(slug);
               return `/blog/${slug}`;
             }
           },
@@ -43,8 +43,7 @@ export default defineConfig(({ mode }) => ({
               return `/notes/${slug}`;
             }
           }
-        ],
-        postRenderingHooks: [async route => console.log(route)]
+        ]
       }
     }),
     tailwindcss()

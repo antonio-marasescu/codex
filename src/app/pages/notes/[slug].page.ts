@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { AsyncPipe, DatePipe } from '@angular/common';
-import { ContentService } from '../../shared/services/content.service';
-import { map, switchMap } from 'rxjs';
+import { DatePipe } from '@angular/common';
+import { NotePostsService } from '../../shared/services/note-posts.service';
 
 @Component({
   selector: 'app-note-detail',
-  imports: [RouterLink, AsyncPipe, DatePipe],
+  imports: [RouterLink, DatePipe],
   template: `
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-4xl mx-auto">
-        @if (note$ | async; as note) {
+        @let note = notePost();
+        @if (note) {
           <article
             class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700"
           >
@@ -71,10 +71,7 @@ import { map, switchMap } from 'rxjs';
 })
 export default class NoteDetailComponent {
   private route = inject(ActivatedRoute);
-  private contentService = inject(ContentService);
-
-  note$ = this.route.paramMap.pipe(
-    map(params => params.get('slug')),
-    switchMap(slug => this.contentService.getNote(slug || ''))
-  );
+  private notePostsService = inject(NotePostsService);
+  private readonly slug = this.route.snapshot.params['slug'];
+  protected notePost = this.notePostsService.getPostBySlug(this.slug);
 }

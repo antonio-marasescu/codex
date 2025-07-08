@@ -1,5 +1,6 @@
 ---
 title: 'Azure Functions Overview'
+slug: 'azure-functions-overview'
 description: 'Introduction to Azure Functions for serverless development'
 category: 'Cloud'
 tags: ['azure', 'functions', 'serverless']
