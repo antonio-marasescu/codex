@@ -1,8 +1,7 @@
 @import 'tailwindcss';
+@plugin "tailwindcss-primeui";
+@custom-variant dark (&:where(.codex-dark, .codex-dark *));
 
-/* You can add global styles to this file, and also import other style files */
-html,
-body {
-  display: block;
-  height: 100%;
+.material-icons-outlined {
+  font-size: 20px!important;
 }
