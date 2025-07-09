@@ -22,7 +22,7 @@ import { InputText } from 'primeng/inputtext';
       </div>
       <p-floatlabel variant="on">
         <input pInputText id="search" formControlName="search" autocomplete="off" />
-        <label for="search">Search</label>
+        <label for="search">Search...</label>
       </p-floatlabel>
     </form>
   `,
