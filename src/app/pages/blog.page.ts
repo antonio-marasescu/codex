@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-blog-layout',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet],
   template: `
-    <div>
-      <h1>Blog</h1>
-      <nav>
-        <a routerLink="/blog/overview">Overview</a>
-      </nav>
+    <div class="md:min-w-xl max-w-4xl">
       <router-outlet />
     </div>
   `

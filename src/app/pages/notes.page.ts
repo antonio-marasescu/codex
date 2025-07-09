@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-notes-layout',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet],
   template: `
-    <div>
-      <h1>Notes</h1>
-      <nav>
-        <a routerLink="/notes/overview">Overview</a>
-      </nav>
+    <div class="w-full max-w-4xl">
       <router-outlet />
     </div>
   `

@@ -1,71 +1,39 @@
-import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { Component, computed, inject } from '@angular/core';
 import { NotePostsService } from '../../shared/services/note-posts.service';
+import { NotesPostPreviewComponent } from '../../shared/components/features/notes/notes-post-preview.component';
+import { createNoteFilterForm, serializeNotePreview } from '../../shared/utils/note.utils';
+import { NotesCategoriesFilterComponent } from '../../shared/components/features/notes/notes-categories-filter.component';
+import { startWith } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NoteCategory, NotePost } from '../../shared/types/content/note.types';
 
 @Component({
   selector: 'app-notes-overview',
-  imports: [RouterLink, DatePipe],
+  imports: [NotesPostPreviewComponent, NotesCategoriesFilterComponent],
   template: `
     <div class="container mx-auto px-4 py-8">
-      <div class="max-w-6xl mx-auto">
-        <h1 class="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Notes</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
-          Welcome to the notes section. Here you'll find all our notes organized by category.
-        </p>
-
-        @let notes = notesByCategory();
-        @let categories = notesCategories();
-        @if (notes && categories) {
-          <div class="space-y-8">
-            @for (category of categories; track category) {
-              <section
-                class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700"
-              >
-                <h2
-                  class="text-2xl font-semibold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2"
-                >
+      @let notes = notesByCategory();
+      @let categories = notesCategories();
+      @if (notes && categories) {
+        <app-notes-categories-filter [form]="notesFilterForm" [categories]="categories" />
+        <section class="grid gap-8 pt-4 md:pt-8">
+          @for (category of filteredCategories(); track $index) {
+            @let notes = filteredNotesByCategory()[category];
+            @if (notes && notes.length > 0) {
+              <section class="grid gap-4">
+                <h2 class="text-2xl font-semibold">
                   {{ category }}
                 </h2>
-
-                <div class="grid gap-4">
-                  @for (note of notes[category]; track note.slug) {
-                    <article
-                      class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600"
-                    >
-                      <h3 class="text-lg font-medium mb-2">
-                        <a
-                          [routerLink]="['/notes', note.slug]"
-                          class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
-                        >
-                          {{ note.title }}
-                        </a>
-                      </h3>
-                      <p class="text-gray-600 dark:text-gray-300 mb-3">{{ note.description }}</p>
-                      <div
-                        class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400"
-                      >
-                        <span>{{ note.publishedAt | date: 'mediumDate' }}</span>
-                        @if (note.tags && note.tags.length > 0) {
-                          <div class="flex gap-2">
-                            @for (tag of note.tags; track tag) {
-                              <span
-                                class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded"
-                              >
-                                {{ tag }}
-                              </span>
-                            }
-                          </div>
-                        }
-                      </div>
-                    </article>
+                <div class="grid gap-6">
+                  @for (note of notes; track note.slug) {
+                    <app-notes-post-preview [notePost]="note" />
                   }
                 </div>
               </section>
             }
-          </div>
-        }
-      </div>
+          }
+        </section>
+      }
     </div>
   `
 })
@@ -73,4 +41,39 @@ export default class NotesOverviewComponent {
   private readonly notePostsService = inject(NotePostsService);
   protected notesByCategory = this.notePostsService.getPostsByCategory();
   protected notesCategories = this.notePostsService.getCategories();
+  protected notesFilterForm = createNoteFilterForm();
+  protected selectedFilter = toSignal(
+    this.notesFilterForm.valueChanges.pipe(startWith(this.notesFilterForm.value)),
+    { initialValue: this.notesFilterForm.value }
+  );
+  protected filteredCategories = computed(() => {
+    const filter = this.selectedFilter();
+    const availableCategories = this.notesCategories();
+    if (filter.selectedCategory === NoteCategory.All) {
+      return availableCategories;
+    }
+    return availableCategories.filter(category => category === filter.selectedCategory);
+  });
+  protected filteredNotesByCategory = computed(() => {
+    const filter = this.selectedFilter();
+    const notesByCategory = this.notesByCategory();
+    const filteredCategories = this.filteredCategories();
+    const searchFilter = filter.search;
+
+    if (!searchFilter) {
+      return notesByCategory;
+    }
+    return filteredCategories.reduce(
+      (accum, category) => {
+        const data = notesByCategory[category].filter(note =>
+          serializeNotePreview(note).includes(searchFilter.toLowerCase())
+        );
+        return {
+          ...accum,
+          [category]: data
+        };
+      },
+      {} as Record<string, NotePost[]>
+    );
+  });
 }

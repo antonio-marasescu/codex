@@ -1,0 +1,18 @@
+:root {
+  --p-primary-900: #ffffff;
+  --p-surface-700: #ffffff;
+  --p-surface-900: #ffffff;
+}
+
+.layout-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.layout-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--p-surface-700);
+  border-radius: 6px;
+}
+
+.layout-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--p-primary-900);
+}

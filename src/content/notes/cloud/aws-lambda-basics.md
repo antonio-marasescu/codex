@@ -1,7 +1,7 @@
 ---
 title: 'AWS Lambda Basics'
 slug: 'aws-lambda-basics'
-description: 'Getting started with AWS Lambda serverless functions'
+description: 'Getting started with AWS Lambda serverless functions this is some long ass discussion oof course'
 category: 'Cloud'
 tags: ['aws', 'lambda', 'serverless']
 publishedAt: '2024-01-10'
