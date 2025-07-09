@@ -7,7 +7,7 @@ import { Card } from 'primeng/card';
   selector: 'app-home',
   imports: [RouterLink, ButtonDirective, Card],
   template: `
-    <div class="text-center max-w-4xl">
+    <div class="w-full max-w-4xl mx-auto text-center">
       <h1
         class="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
       >
