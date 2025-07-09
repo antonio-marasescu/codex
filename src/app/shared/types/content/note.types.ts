@@ -12,6 +12,7 @@ export enum NoteCategory {
 
 export type NotePost = {
   category: NoteCategory;
+  folder: string;
 } & StandardContent;
 
 export type NoteFilterForm = {

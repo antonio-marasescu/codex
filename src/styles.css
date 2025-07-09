@@ -9,6 +9,7 @@
 
 :root {
   --shiki-dark-bg: transparent;
+  --shiki-light-bg: transparent;
   --shiki-dark: #ffffff;
   --shiki-dark-font-style: normal;
   --shiki-dark-font-weight: normal;
@@ -29,4 +30,11 @@ html.codex-dark .shiki span {
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+html .mermaid {
+  background-color: var(--shiki-light-bg) !important;
+}
+
+html.codex-dark .mermaid {
+  background-color: var(--shiki-dark-bg) !important;
 }

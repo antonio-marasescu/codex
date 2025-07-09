@@ -33,6 +33,11 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(withDebugRoutes()),
     provideHttpClient(withFetch(), withInterceptors([requestContextInterceptor])),
     provideClientHydration(withEventReplay()),
-    provideContent(withMarkdownRenderer(), withShikiHighlighter())
+    provideContent(
+      withMarkdownRenderer({
+        loadMermaid: () => import('mermaid')
+      }),
+      withShikiHighlighter()
+    )
   ]
 };

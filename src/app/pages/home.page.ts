@@ -35,7 +35,7 @@ import { Card } from 'primeng/card';
             <h2 class="text-2xl font-semibold mb-4">📚 Notes</h2>
           </ng-template>
           <div class="min-h-35 max-h-35 flex flex-col items-center">
-            <p class="mb-4 flex-1">My ideas and personal notes for different category.</p>
+            <p class="mb-4 flex-1">My ideas and personal notes for different categories.</p>
             <a pButton routerLink="/notes/overview" severity="info">Explore Notes</a>
           </div>
         </p-card>

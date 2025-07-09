@@ -7,8 +7,6 @@ tags: ['terraform', 'iac', 'infrastructure']
 publishedAt: '2024-01-08'
 ---
 
-# Terraform Fundamentals
-
 Terraform is a popular infrastructure as code tool for managing cloud resources.
 
 ## Key Concepts

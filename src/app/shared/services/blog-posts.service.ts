@@ -32,7 +32,8 @@ export class BlogPostsService {
   private mapFileToBlogPost(file: ContentFile): BlogPost {
     return {
       ...file.attributes,
-      content: file.content
+      content: file.content,
+      filename: file.filename
     } as BlogPost;
   }
 }

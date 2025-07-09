@@ -11,6 +11,7 @@ import { DarkModeSelector } from '../../config/theming/theming.config';
   template: `
     @if (theme() === AppTheme.Light) {
       <p-button
+        tabindex="0"
         pRipple
         [text]="true"
         [rounded]="true"
@@ -23,6 +24,7 @@ import { DarkModeSelector } from '../../config/theming/theming.config';
       </p-button>
     } @else {
       <p-button
+        tabindex="0"
         pRipple
         [text]="true"
         [rounded]="true"

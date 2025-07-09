@@ -5,4 +5,5 @@ export type StandardContent = {
   publishedAt: string;
   tags: string[];
   content: string;
+  filename: string;
 };

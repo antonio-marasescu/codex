@@ -7,8 +7,6 @@ tags: ['investing', 'value', 'stocks']
 publishedAt: '2024-01-05'
 ---
 
-# Value Investing Principles
-
 Value investing is an investment strategy that involves picking stocks that appear to trade for less than their intrinsic value.
 
 ## Key Principles

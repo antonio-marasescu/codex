@@ -7,8 +7,6 @@ tags: ['azure', 'functions', 'serverless']
 publishedAt: '2024-01-12'
 ---
 
-# Azure Functions Overview
-
 Azure Functions is Microsoft's serverless compute service for building event-driven applications.
 
 ## Supported Languages

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Button } from 'primeng/button';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, Button],
   template: `
-    <h2>Page Not Found</h2>
-
-    <a routerLink="/">Go Back Home</a>
+    <h2 class="text-xl md:text-2xl">Page Not Found</h2>
+    <p-button routerLink="/" link severity="warn">Go Back Home</p-button>
   `
 })
 export default class PageNotFoundComponent {}

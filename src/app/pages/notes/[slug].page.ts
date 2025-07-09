@@ -1,69 +1,49 @@
-import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { Component, effect, inject, Injector, runInInjectionContext } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { NotePostsService } from '../../shared/services/note-posts.service';
+import { ContentFile, injectContent, MarkdownComponent } from '@analogjs/content';
+import { Tag } from 'primeng/tag';
+import { NotePost } from '../../shared/types/content/note.types';
+import { Card } from 'primeng/card';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-note-detail',
-  imports: [RouterLink, DatePipe],
+  imports: [DatePipe, Tag, Card, AsyncPipe, MarkdownComponent],
   template: `
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-4xl mx-auto">
-        @let note = notePost();
-        @if (note) {
-          <article
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 border border-gray-200 dark:border-gray-700"
-          >
-            <header class="mb-8">
-              <a
-                routerLink="/notes/overview"
-                class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mb-4 transition-colors"
-              >
-                ← Back to Notes
-              </a>
-              <div class="mb-4">
-                <span
-                  class="inline-block px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-sm rounded mb-4"
-                >
-                  {{ note.category }}
-                </span>
-              </div>
-              <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                {{ note.title }}
-              </h1>
-              <p class="text-xl text-gray-600 dark:text-gray-300 mb-4">{{ note.description }}</p>
-              <div
-                class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400 mb-6"
-              >
-                <span>{{ note.publishedAt | date: 'mediumDate' }}</span>
-                @if (note.tags && note.tags.length > 0) {
-                  <div class="flex gap-2">
-                    @for (tag of note.tags; track tag) {
-                      <span
-                        class="px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs rounded"
-                      >
-                        {{ tag }}
-                      </span>
+        @let post = notePostContent$ | async;
+        @if (post) {
+          <article class="w-full">
+            <p-card
+              class="p-2 md:p-6 rounded-lg shadow-lg bg-surface-100 dark:bg-surface-900/20 border border-surface-200 dark:border-surface-900"
+            >
+              <ng-template #title>
+                @if (post.attributes) {
+                  <div>
+                    <h1 class="text-4xl font-bold mb-4">
+                      {{ post.attributes.title }}
+                    </h1>
+                    <div class="flex items-center justify-between text-sm mb-4 font-light">
+                      <span>{{ post.attributes.publishedAt | date: 'mediumDate' }}</span>
+                    </div>
+                    @if (post.attributes.tags && post.attributes.tags.length > 0) {
+                      <div class="flex flex-wrap gap-2">
+                        @for (tag of post.attributes.tags; track tag) {
+                          <p-tag>{{ tag }}</p-tag>
+                        }
+                      </div>
                     }
                   </div>
                 }
+              </ng-template>
+              <div class=" w-full">
+                <analog-markdown [content]="post.content" class="prose dark:prose-invert" />
               </div>
-            </header>
-
-            <div class="prose prose-lg dark:prose-invert max-w-none">
-              <div [innerHTML]="note.content"></div>
-            </div>
+            </p-card>
           </article>
-        } @else {
-          <div class="text-center py-12">
-            <p class="text-gray-500 dark:text-gray-400">Note not found.</p>
-            <a
-              routerLink="/notes/overview"
-              class="inline-block mt-4 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
-            >
-              ← Back to Notes
-            </a>
-          </div>
         }
       </div>
     </div>
@@ -73,5 +53,21 @@ export default class NoteDetailComponent {
   private route = inject(ActivatedRoute);
   private notePostsService = inject(NotePostsService);
   private readonly slug = this.route.snapshot.params['slug'];
+  private readonly injector = inject(Injector);
   protected notePost = this.notePostsService.getPostBySlug(this.slug);
+  protected notePostContent$: Observable<ContentFile<NotePost | Record<string, never>>> = of();
+
+  constructor() {
+    effect(() => {
+      const note = this.notePost();
+      if (note) {
+        runInInjectionContext(this.injector, () => {
+          this.notePostContent$ = injectContent<NotePost>({
+            param: 'slug',
+            subdirectory: `notes/${note.folder}`
+          });
+        });
+      }
+    });
+  }
 }
