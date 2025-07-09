@@ -11,7 +11,7 @@ import { NoteCategory, NotePost } from '../../shared/types/content/note.types';
   selector: 'app-notes-overview',
   imports: [NotesPostPreviewComponent, NotesCategoriesFilterComponent],
   template: `
-    <div class="container mx-auto px-4 py-8">
+    <div class="w-full py-8">
       @let notes = notesByCategory();
       @let categories = notesCategories();
       @if (notes && categories) {

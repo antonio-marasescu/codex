@@ -6,7 +6,7 @@ import { BlogPostPreviewComponent } from '../../shared/components/features/blog/
   selector: 'app-blog-overview',
   imports: [BlogPostPreviewComponent],
   template: `
-    <div class="container mx-auto px-4 py-8">
+    <div class="w-full py-8">
       <div class="grid gap-6">
         @for (post of blogPosts(); track post.slug) {
           <app-blog-post-preview [blogPost]="post" />

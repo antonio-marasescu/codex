@@ -9,7 +9,7 @@ import { StandardLayoutComponent } from './shared/components/layout/standard-lay
   template: `
     <app-standard-layout>
       <app-navbar nav />
-      <main content class="flex flex-col items-center gap-24">
+      <main content class="flex flex-col gap-24">
         <router-outlet />
       </main>
     </app-standard-layout>

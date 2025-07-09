@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-notes-layout',
   imports: [RouterOutlet],
   template: `
-    <div class="w-full max-w-4xl">
+    <div class="w-full max-w-4xl mx-auto">
       <router-outlet />
     </div>
   `
