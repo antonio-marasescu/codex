@@ -5,11 +5,11 @@ import { createBlogFilterForm, serializeBlogPreview } from '../../shared/utils/b
 import { BlogSearchFilterComponent } from '../../shared/components/features/blog/blog-search-filter.component';
 import { startWith } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { BlogPost } from '../../shared/types/content/blog.types';
+import { AnimateOnScroll } from 'primeng/animateonscroll';
 
 @Component({
   selector: 'app-blog-overview',
-  imports: [BlogPostPreviewComponent, BlogSearchFilterComponent],
+  imports: [BlogPostPreviewComponent, BlogSearchFilterComponent, AnimateOnScroll],
   template: `
     <div class="w-full py-8">
       @let posts = blogPosts();
@@ -17,7 +17,13 @@ import { BlogPost } from '../../shared/types/content/blog.types';
         <app-blog-search-filter [form]="blogFilterForm" />
         <section class="grid gap-6 pt-4 md:pt-8">
           @for (post of filteredBlogPosts(); track post.slug) {
-            <app-blog-post-preview [blogPost]="post" />
+            <app-blog-post-preview
+              [blogPost]="post"
+              pAnimateOnScroll
+              [once]="true"
+              enterClass="animate-enter fade-in-0 slide-in-from-b-4 animate-duration-700"
+              leaveClass="animate-leave fade-out"
+            />
           }
         </section>
       }
