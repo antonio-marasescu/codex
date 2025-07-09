@@ -1,0 +1,7 @@
+:root {
+  --p-button-primary-background: #ffffff;
+}
+
+.active-link {
+  color: var(--p-button-primary-background);
+}

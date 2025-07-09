@@ -86,6 +86,11 @@ export const AppThemePreset = definePreset(Aura, {
       root: {
         borderRadius: '16px'
       }
+    },
+    inputtext: {
+      root: {
+        borderRadius: '16px'
+      }
     }
   }
 });
