@@ -1,7 +1,32 @@
 @import 'tailwindcss';
 @plugin "tailwindcss-primeui";
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.codex-dark, .codex-dark *));
 
 .material-icons-outlined {
   font-size: 20px !important;
+}
+
+:root {
+  --shiki-dark-bg: transparent;
+  --shiki-dark: #ffffff;
+  --shiki-dark-font-style: normal;
+  --shiki-dark-font-weight: normal;
+  --shiki-dark-text-decoration: none;
+}
+
+.shiki-dark {
+  display: none;
+}
+.shiki-light {
+  display: block;
+}
+
+html.codex-dark .shiki,
+html.codex-dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
 }

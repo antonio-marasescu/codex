@@ -15,7 +15,34 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     analog({
       content: {
-        highlighter: 'shiki'
+        highlighter: 'shiki',
+        shikiOptions: {
+          highlight: {
+            themes: {
+              light: 'vitesse-light',
+              dark: 'vitesse-dark'
+            }
+          },
+          highlighter: {
+            additionalLangs: [
+              'mermaid',
+              'bash',
+              'sh',
+              'angular-ts',
+              'typescript',
+              'javascript',
+              'json',
+              'xml',
+              'yaml',
+              'yml',
+              'shell',
+              'docker',
+              'dockerfile',
+              'markdown',
+              'dotenv'
+            ]
+          }
+        }
       },
       prerender: {
         routes: async () => [

@@ -14,7 +14,7 @@ import { Tag } from 'primeng/tag';
         class="p-2 md:p-6 rounded-lg shadow-lg bg-surface-100 dark:bg-surface-900/20 border border-surface-200 dark:border-surface-900"
       >
         <ng-template #title>
-          <h3 class="text-2xl">
+          <h3 class="text-2xl font-bold">
             <a [routerLink]="['/blog', blogPost().slug]" class=" hover:opacity-80">
               {{ blogPost().title }}
             </a>

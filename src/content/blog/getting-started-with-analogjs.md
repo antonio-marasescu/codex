@@ -8,8 +8,6 @@ draft: false
 tags: ['analogjs', 'angular', 'tutorial', 'framework', 'development']
 ---
 
-# Getting Started with AnalogJS
-
 AnalogJS is a modern full-stack framework for Angular that provides excellent developer experience and performance. It combines the power of Angular with the simplicity of file-based routing and static site generation, making it an ideal choice for building fast, scalable web applications.
 
 ## What is AnalogJS?
