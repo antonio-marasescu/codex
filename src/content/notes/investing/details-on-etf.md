@@ -40,13 +40,13 @@ You can look at an ETF from a certain perspective a combination of a mutual fund
 
 ##### Investment Fund
 
- An investment fund is a collection point for the investors capital.
+An investment fund is a collection point for the investors capital.
 
 To put it simply, thousands of investors pool their funds and give the order to a professional (fund manager), to invest the funds as profitably as possible and with wide diversification in the context of a specified investment strategy.
 
 ##### Index Fund
 
-The provider of an index fund ensures that it represents the development of an index as accurately as possible. The investments of an index fund (constituents and weightage) are exactly specified by the index. Indices are market barometers, which make the performance or return of total markets determinable.
+The provider of an index fund ensures that it represents the development of an index as accurately as possible. The investments of an index fund (constituents and weightage) are exactly specified by the index. Indices are market barometers, which make the performance or return of total markets determinable.
 
 ##### Exchange Traded
 
@@ -93,7 +93,7 @@ Bond ETFs consist of bonds or other fixed-income securities. They aim to replica
 
 Bonds are popular because they’ve historically been less volatile than equities. Meanwhile, returns have been higher than cash although not as strong as equities over the long term.
 Another positive feature is that highly rated government bonds have often performed well during times of market stress when equities falter.
-This means bonds can be used to diversify a portfolio away from equities and to shore up returns during recessionary or deflationary conditions. As a low-risk portfolio component, bonds, therefore, help to reduce losses, especially in times of crisis.
+This means bonds can be used to diversify a portfolio away from equities and to shore up returns during recessionary or deflationary conditions. As a low-risk portfolio component, bonds, therefore, help to reduce losses, especially in times of crisis.
 
 ##### Example Types:
 
@@ -172,7 +172,7 @@ Inverse ETFs are a type of exchange-traded fund designed to provide the **opposi
    - Does it has [Physical Replication](https://www.justetf.com/en/academy/physical-replication-of-etfs.html): tracks an index by directly buying the underlying securities of the index. (most suggested)
      - Full Replication Method: replicates the index 1:1 by buying the stock.
      - Sampling Method: only the most important or liquid securities are purchased because these usually have the greatest influence on the index performance.
-   - Does it has [Synthetic Replication](https://www.investopedia.com/terms/s/synthetic-etf.asp): pooled investment that invests money in [derivatives](https://www.investopedia.com/terms/d/derivative.asp) and [swaps](https://www.investopedia.com/terms/s/swap.asp) rather than in physical stock shares (less favored in recent times)
+   - Does it has [Synthetic Replication](https://www.investopedia.com/terms/s/synthetic-etf.asp): pooled investment that invests money in [derivatives](https://www.investopedia.com/terms/d/derivative.asp) and [swaps](https://www.investopedia.com/terms/s/swap.asp) rather than in physical stock shares (less favored in recent times)
 4. What is the ETF Currency?
    - There is a currency for the actual ETF on how it is managed by investment manager.
    - There is a currency for how the ETF is actual listed on the Stock Exchange.
@@ -193,7 +193,7 @@ Inverse ETFs are a type of exchange-traded fund designed to provide the **opposi
    - You need to look at the ETF with the smaller TER
    - For example, a TER of 0.20% means that, on average, you will pay the ETF manager 2 EURO per year for every 1,000 EUR invested in that ETF.
 8. What is the value of the Assets Under Management ([AUM](<https://www.investopedia.com/terms/a/aum.asp#:~:text=Assets%20under%20management%20(AUM)%20is%20the%20total%20market%20value%20of,as%20a%20percentage%20of%20AUM.>))
-   - AUM is the sum of the market value for all of the investments managed by a fund or family of funds, a venture capital firm, a brokerage company, or an individual registered as an investment advisor or portfolio manager.
+   - AUM is the sum of the market value for all of the investments managed by a fund or family of funds, a venture capital firm, a brokerage company, or an individual registered as an investment advisor or portfolio manager.
    - This influence the liquidity of the ETF:
      - If an ETF has a large portfolio then it has many investors that buy and sell the ETF fund units.
      - A more liquid ETF offers the advantage of smaller spreads. The spread is the difference between the selling price and the buying price, similar to what you see when you go to buy EURO at a currency exchange office.
