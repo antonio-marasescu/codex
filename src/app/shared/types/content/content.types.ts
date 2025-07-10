@@ -6,4 +6,5 @@ export type StandardContent = {
   tags: string[];
   content: string;
   filename: string;
+  type: 'blog' | 'note';
 };

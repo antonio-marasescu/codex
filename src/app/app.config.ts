@@ -11,6 +11,7 @@ import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
 import { providePrimeNG } from 'primeng/config';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AppThemePreset, DarkModeSelector } from './shared/config/theming/theming.config';
+import { DialogService } from 'primeng/dynamicdialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -38,6 +39,7 @@ export const appConfig: ApplicationConfig = {
         loadMermaid: () => import('mermaid')
       }),
       withShikiHighlighter()
-    )
+    ),
+    DialogService
   ]
 };

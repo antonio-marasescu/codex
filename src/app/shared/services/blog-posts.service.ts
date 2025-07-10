@@ -33,7 +33,8 @@ export class BlogPostsService {
     return {
       ...file.attributes,
       content: file.content,
-      filename: file.filename
+      filename: file.filename,
+      type: 'blog'
     } as BlogPost;
   }
 }

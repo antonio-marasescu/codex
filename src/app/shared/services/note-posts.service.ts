@@ -63,7 +63,8 @@ export class NotePostsService {
       category: file.attributes['category'],
       content: file.content,
       filename: file.filename,
-      folder: file.attributes['category'].toLowerCase()
+      folder: file.attributes['category'].toLowerCase(),
+      type: 'note'
     } as NotePost;
   }
 }

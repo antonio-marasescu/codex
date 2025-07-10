@@ -4,13 +4,21 @@ import { ThemeSelectorComponent } from '../theming/theme-selector.component';
 import { Menubar } from 'primeng/menubar';
 import { Ripple } from 'primeng/ripple';
 import { NavigationItems } from '../../config/constants/navigation/navigation.constants';
+import { SearchPostsFieldComponent } from '../search/search-posts-field.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [ThemeSelectorComponent, Menubar, Ripple, RouterLink, RouterLinkActive],
+  imports: [
+    ThemeSelectorComponent,
+    Menubar,
+    Ripple,
+    RouterLink,
+    RouterLinkActive,
+    SearchPostsFieldComponent
+  ],
   template: `
     <nav class="w-screen min-h-20 flex flex-row justify-center">
-      <p-menubar [model]="NavigationItems" class="rounded-full  min-w-62 m-2">
+      <p-menubar [model]="NavigationItems" class="rounded-full min-w-62 w-164 m-2">
         <ng-template #start>
           <span class="text-lg font-bold text-primary flex items-center gap-2 animate-fade-in">
             <span
@@ -43,7 +51,8 @@ import { NavigationItems } from '../../config/constants/navigation/navigation.co
           </a>
         </ng-template>
         <ng-template #end>
-          <div class="flex items-center pl-12">
+          <div class="flex items-center gap-1">
+            <app-search-posts-field />
             <app-theme-selector />
           </div>
         </ng-template>

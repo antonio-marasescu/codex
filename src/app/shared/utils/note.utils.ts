@@ -12,5 +12,5 @@ export function createNoteFilterForm(): FormGroup<NoteFilterForm> {
 }
 
 export function serializeNotePreview(note: NotePost): string {
-  return `${note.category} ${note.description} ${note.tags.toString()}`.toLowerCase();
+  return `${note.title} ${note.category} ${note.description} ${note.tags.toString()}`.toLowerCase();
 }
