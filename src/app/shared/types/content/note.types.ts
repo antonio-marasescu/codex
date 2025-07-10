@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 
 export enum NoteCategory {
   Cloud = 'Cloud',
+  AWS = 'AWS',
   Iac = 'Iac',
   Webdev = 'Webdev',
   LLM = 'LLM',
