@@ -47,7 +47,6 @@ export default defineConfig(({ mode }) => ({
       prerender: {
         routes: async () => [
           '/',
-          '/home',
           '/blog/overview',
           '/notes/overview',
           {

@@ -5,6 +5,7 @@ import { Menubar } from 'primeng/menubar';
 import { Ripple } from 'primeng/ripple';
 import { NavigationItems } from '../../config/constants/navigation/navigation.constants';
 import { SearchPostsFieldComponent } from '../search/search-posts-field.component';
+import { NavbarItem } from '../../types/navigation/navbar.types';
 
 @Component({
   selector: 'app-navbar',
@@ -32,7 +33,7 @@ import { SearchPostsFieldComponent } from '../search/search-posts-field.componen
           <a
             [routerLink]="item.routerLink"
             routerLinkActive="active-link"
-            [routerLinkActiveOptions]="{ exact: false }"
+            [routerLinkActiveOptions]="getRouterLinkActiveOptions(item)"
             tabindex="0"
             pRipple
             class="flex items-center p-menubar-item-link text-base"
@@ -64,4 +65,14 @@ import { SearchPostsFieldComponent } from '../search/search-posts-field.componen
 })
 export class NavbarComponent {
   protected readonly NavigationItems = NavigationItems;
+
+  protected getRouterLinkActiveOptions(item: NavbarItem): {
+    exact: boolean;
+  } {
+    if (item.routerLink === '') {
+      return { exact: true };
+    }
+
+    return { exact: false };
+  }
 }
