@@ -1,3 +1,12 @@
+---
+title: 'AWS Athena'
+slug: '033-aws-athena'
+description: 'Guide to AWS Athena for serverless SQL querying'
+category: 'Cloud'
+tags: ['aws', 'athena', 'sql', 'query', 'serverless', 'analytics']
+publishedAt: '2025-01-15'
+---
+
 # AWS Athena
 
 AWS Athena is a serverless, interactive query service that allows you to analyze data in Amazon S3 using standard SQL. Here's a summary of its key features and functionalities:

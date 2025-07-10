@@ -1,3 +1,12 @@
+---
+title: 'AWS Pricing & Billing'
+slug: '014-aws-pricing-and-billing'
+description: 'Guide to AWS pricing models and cost optimization'
+category: 'Cloud'
+tags: ['aws', 'pricing', 'billing', 'cost-optimization', 'reserved-instances']
+publishedAt: '2025-01-15'
+---
+
 # Pricing and Billing
 
 ## Pricing Models in the Cloud

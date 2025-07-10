@@ -1,3 +1,12 @@
+---
+title: 'AWS OpenSearch'
+slug: '034-aws-opensearch'
+description: 'Guide to AWS OpenSearch for search and analytics'
+category: 'Cloud'
+tags: ['aws', 'opensearch', 'elasticsearch', 'search', 'analytics', 'logging']
+publishedAt: '2025-01-15'
+---
+
 # OpenSearch Service
 
 AWS OpenSearch (formerly Amazon Elasticsearch Service) is a managed service that makes it easy to deploy, operate, and scale OpenSearch clusters in the AWS Cloud. It is used for a variety of use cases, including log and event data analysis, full-text search, and real-time application monitoring.

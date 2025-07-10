@@ -1,3 +1,12 @@
+---
+title: 'AWS Elastic Beanstalk'
+slug: '028-elastic-beanstalk'
+description: 'Complete guide to AWS Elastic Beanstalk for application deployment'
+category: 'Cloud'
+tags: ['aws', 'elastic-beanstalk', 'paas', 'deployment', 'application-platform']
+publishedAt: '2025-01-15'
+---
+
 # Elastic Beanstalk
 
 *Elastic Beanstalk* is a developer centric view of deploying application on AWS.

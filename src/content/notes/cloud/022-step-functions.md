@@ -1,3 +1,12 @@
+---
+title: 'AWS Step Functions'
+slug: '022-step-functions'
+description: 'Complete guide to AWS Step Functions for workflow orchestration'
+category: 'Cloud'
+tags: ['aws', 'step-functions', 'workflow', 'orchestration', 'state-machines']
+publishedAt: '2025-01-15'
+---
+
 # Step Functions
 
 - Step Functions allow to build visual workflows which are used to orchestrate Lambda Functions

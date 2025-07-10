@@ -1,3 +1,12 @@
+---
+title: 'AWS Lambda'
+slug: '018-aws-lambda'
+description: 'Complete guide to AWS Lambda serverless computing'
+category: 'Cloud'
+tags: ['aws', 'lambda', 'serverless', 'functions', 'event-driven']
+publishedAt: '2025-01-15'
+---
+
 # AWS Lambda
 
 AWS Lambda is a compute service where you can upload your code and create a Lambda function. AWS Lambda takes care of provisioning and managing the servers that you use to run the code. You don't have to worry about OSs, patching, scaling, etc. You can use Lambda in the following ways:

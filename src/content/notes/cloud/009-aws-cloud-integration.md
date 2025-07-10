@@ -1,3 +1,12 @@
+---
+title: 'AWS Cloud Integration'
+slug: '009-aws-cloud-integration'
+description: 'Guide to AWS integration services and messaging'
+category: 'Cloud'
+tags: ['aws', 'integration', 'messaging', 'api', 'connectivity']
+publishedAt: '2025-01-15'
+---
+
 # Cloud Integration
 
 ## Summary

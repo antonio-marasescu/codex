@@ -1,3 +1,12 @@
+---
+title: 'AWS CloudFormation'
+slug: '030-cloudformation'
+description: 'Complete guide to AWS CloudFormation for infrastructure as code'
+category: 'Cloud'
+tags: ['aws', 'cloudformation', 'iac', 'infrastructure-as-code', 'templates']
+publishedAt: '2025-01-15'
+---
+
 # CloudFormation
 
 - CloudFormation is a declarative way of outlining your AWS Infrastructure, for any resources (most of them are supported).
@@ -202,3 +211,7 @@ Outputs:
 ## Exam Tips
 
 - The stack may be stuck in the DELETE_FAILED state because the dependent object (security group), can't be deleted. This can be for many reasons, for example, the security group could have an ENI attached that’s not part of the CloudFormation stack. To delete the stack you must choose to delete the stack in the console and then select to retain the resource(s) that failed to delete. This can also be achieved from the AWS CLI:
+
+```
+
+```

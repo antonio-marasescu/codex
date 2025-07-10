@@ -1,3 +1,12 @@
+---
+title: 'AWS Global Infrastructure'
+slug: '008-aws-global-infrastructure'
+description: 'Overview of AWS global infrastructure and regions'
+category: 'Cloud'
+tags: ['aws', 'infrastructure', 'regions', 'availability-zones', 'edge-locations']
+publishedAt: '2025-01-15'
+---
+
 # Global Infrastructure
 
 A **global** application is an application deployed in multiple geographic locations (on AWS this could Regions or Edge Locations).

@@ -1,3 +1,12 @@
+---
+title: 'AWS CloudWatch'
+slug: '031-cloudwatch'
+description: 'Complete guide to AWS CloudWatch monitoring and logging'
+category: 'Cloud'
+tags: ['aws', 'cloudwatch', 'monitoring', 'logging', 'metrics', 'alarms']
+publishedAt: '2025-01-15'
+---
+
 # Cloudwatch
 
 Amazon CloudWatch is a monitoring service to monitor your AWS resources, as well as the applications that you run on AWS.

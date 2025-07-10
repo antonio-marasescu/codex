@@ -1,3 +1,12 @@
+---
+title: 'AWS AppSync'
+slug: '024-app-sync'
+description: 'Guide to AWS AppSync for GraphQL API management'
+category: 'Cloud'
+tags: ['aws', 'appsync', 'graphql', 'api', 'real-time']
+publishedAt: '2025-01-15'
+---
+
 # App Sync
 
 - AppSync is a managed service which uses *GraphQL*

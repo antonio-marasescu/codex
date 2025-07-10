@@ -1,3 +1,12 @@
+---
+title: 'AWS Virtual Private Cloud (VPC)'
+slug: '011-aws-vpc'
+description: 'Complete guide to AWS VPC networking and security'
+category: 'Cloud'
+tags: ['aws', 'vpc', 'networking', 'security', 'subnets', 'route-tables']
+publishedAt: '2025-01-15'
+---
+
 # Virtual Private Cloud (VPC)
 
 ## Summary

@@ -1,4 +1,17 @@
+---
+title: 'AWS Cognito'
+slug: '023-cognito'
+description: 'Complete guide to AWS Cognito for user authentication and identity management'
+category: 'Cloud'
+tags: ['aws', 'cognito', 'authentication', 'identity', 'user-pools', 'identity-pools']
+publishedAt: '2025-01-15'
+---
+
 # Cognito
+
+AWS Cognito provides identity for your application users (web application, mobile application, etc.).
+
+**Note:** This is provided as the solution for not creating IAM users which should be used only by your organization/company and need to use AWS directly.
 
 - Used to give access for users/clients to be able to interact with our applications.
 - **Cognito User Pools**:

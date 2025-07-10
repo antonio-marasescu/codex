@@ -1,3 +1,12 @@
+---
+title: 'AWS Kinesis'
+slug: '027-kinesis'
+description: 'Complete guide to AWS Kinesis for real-time data streaming'
+category: 'Cloud'
+tags: ['aws', 'kinesis', 'streaming', 'real-time', 'data', 'analytics']
+publishedAt: '2025-01-15'
+---
+
 # Kinesis
 
 Kinesis is a managed service service which makes it easy to collect and analyze data and video streams in real time. It is considered a managed alternative for Apache Kafka.

@@ -1,3 +1,12 @@
+---
+title: 'AWS Machine Learning Services'
+slug: '013-aws-machine-learning'
+description: 'Overview of AWS machine learning and AI services'
+category: 'Cloud'
+tags: ['aws', 'machine-learning', 'ai', 'sagemaker', 'comprehend', 'rekognition']
+publishedAt: '2025-01-15'
+---
+
 # Machine Learning
 
 AWS provides different services for various uses cases using machine learning:

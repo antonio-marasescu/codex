@@ -1,3 +1,12 @@
+---
+title: 'AWS Database Services'
+slug: '005-aws-databases'
+description: 'Comprehensive guide to AWS database solutions and data services'
+category: 'Cloud'
+tags: ['aws', 'rds', 'dynamodb', 'database', 'nosql', 'sql']
+publishedAt: '2025-01-15'
+---
+
 # AWS Databases
 
 ## Summary

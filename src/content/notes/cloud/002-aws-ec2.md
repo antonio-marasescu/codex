@@ -1,3 +1,12 @@
+---
+title: 'AWS Elastic Compute Cloud (EC2)'
+slug: '002-aws-ec2'
+description: 'Complete guide to AWS EC2 instances, storage, and compute services'
+category: 'Cloud'
+tags: ['aws', 'ec2', 'compute', 'ebs', 'efs', 'ami', 'instance-types']
+publishedAt: '2025-01-15'
+---
+
 # Elastic Compute Cloud (EC2)
 
 It basically offers a server (IaS) with the options to customize:

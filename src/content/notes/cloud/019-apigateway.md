@@ -1,3 +1,12 @@
+---
+title: 'AWS API Gateway'
+slug: '019-apigateway'
+description: 'Complete guide to AWS API Gateway for API management'
+category: 'Cloud'
+tags: ['aws', 'api-gateway', 'api', 'rest', 'websocket', 'authorization']
+publishedAt: '2025-01-15'
+---
+
 # API Gateway
 
 Allows us to create REST APIs which can be public and accessible to the clients. It can proxy requests to Lambda functions and other services which expose HTTP end-points.

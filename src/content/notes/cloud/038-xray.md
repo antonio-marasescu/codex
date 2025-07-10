@@ -1,3 +1,12 @@
+---
+title: 'AWS X-Ray'
+slug: '038-xray'
+description: 'Guide to AWS X-Ray for distributed tracing'
+category: 'Cloud'
+tags: ['aws', 'x-ray', 'tracing', 'monitoring', 'distributed-systems']
+publishedAt: '2025-01-15'
+---
+
 A **segment document** conveys information about a segment to X-Ray. A segment document can be up to 64 kB and contain a whole segment with subsegments, a fragment of a segment that indicates that a request is in progress, or a single subsegment that is sent separately. You can send segment documents directly to X-Ray by using the [PutTraceSegments](https://docs.aws.amazon.com/xray/latest/api/API_PutTraceSegments.html) API.
 A subset of segment fields are indexed by X-Ray for use with filter expressions. For example, if you set the user field on a segment to a unique identifier, you can search for segments associated with specific users in the X-Ray console or by using the `GetTraceSummaries` API.
 
