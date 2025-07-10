@@ -9,7 +9,7 @@ publishedAt: '2025-01-15'
 
 # EBS Volume
 
-Amazon *Elastic Block Storage* allows you to create storage volumes and attach them to EC2 instances. Once attached, you can create a file system on top of these volumes, run a database, or use them in any other way you would use a block device. Amazon EBS volumes are placed in a specific Availability Zone, where they are automatically replicated to protect you from failure of a single component (i.e. they exist across multiple physical drives). Think of EBS as a disk in the cloud that you attach to your EC2 instance.
+Amazon _Elastic Block Storage_ allows you to create storage volumes and attach them to EC2 instances. Once attached, you can create a file system on top of these volumes, run a database, or use them in any other way you would use a block device. Amazon EBS volumes are placed in a specific Availability Zone, where they are automatically replicated to protect you from failure of a single component (i.e. they exist across multiple physical drives). Think of EBS as a disk in the cloud that you attach to your EC2 instance.
 
 - An EC2 machine loses its root volume (main drive) when it is manually terminated.
 - Unexpected terminations might happen from time to time (AWS would email you)

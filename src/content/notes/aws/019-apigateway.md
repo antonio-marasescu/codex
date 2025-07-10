@@ -51,7 +51,7 @@ Allows us to create REST APIs which can be public and accessible to the clients.
   - Stage variables are passed to the "context" object in AWS Lambda
 - Common pattern for the API Gateway and stage variables:
   - We create stage variables to indicate the corresponding Lambda alias
-  - In stage resource configuration we can reference the Lambda function and the stage variables as follows: `lambda-function-name:${stageVariable.lambdaAlias}`
+  - In stage resource configuration we can reference the Lambda function and the stage variables as follows: `lambda-function-name:${stageVariable.lambdaAlias}`
 
 ### Canary Deployments
 
@@ -67,7 +67,7 @@ Allows us to create REST APIs which can be public and accessible to the clients.
 - MOCK: API Gateway responds without sending the request to the back-end
 - HTTP / AWS (Lambda and other services): forwards the request, but we can modify it
   - We must configure both the integration request and the integration response
-  - Setup data mapping using **mapping templates** for request and response
+  - Setup data mapping using **mapping templates** for request and response
 - AWS_PROXY (Lambda Proxy): the request is passed to the Lambda without being modified
   - No mapping templates, headers and query strings can be modified. They are passed as arguments to the function
 - HTTP_PROXY: same as AWS_PROXY, used for other back-end services
@@ -107,8 +107,8 @@ Allows us to create REST APIs which can be public and accessible to the clients.
 - Cache is expensive, use it only in production
 - Cache can be invalidated by:
   - Flush the entire cache immediately
-  - Clients can invalidate cache with the header `Cache-Control: max-age=0` (needs IAM auth)
-  - In case of lack of *InvalidateCache* policy, any client can invalidate the cache
+  - Clients can invalidate cache with the header `Cache-Control: max-age=0` (needs IAM auth)
+  - In case of lack of _InvalidateCache_ policy, any client can invalidate the cache
 
 ## API Gateway Usage Plans & API Keys
 
@@ -127,7 +127,7 @@ Allows us to create REST APIs which can be public and accessible to the clients.
   2. Generate/import API keys which can be distributed to application developers/customers
   3. Create usage plan with desired throttle and quota limits
   4. Associate API stages and API keys with the usage plan
-- Callers must supply an API key using the **x-api-key** header
+- Callers must supply an API key using the **x-api-key** header
 
 ## Monitoring, Logging/Tracing
 
@@ -141,12 +141,12 @@ Allows us to create REST APIs which can be public and accessible to the clients.
 - CloudWatch Metrics:
   - Metrics are per stage with the possibility to enable detailed metrics
   - Useful metrics:
-    - **CacheHitCount** and **CacheMissCount** give information about the efficiency of the cache
-    - **Count** - the total number of API requests
-    - **IntegrationLatency** - the time between the request are relayed to the back-end and response is received by the API Gateway
-    - **Latency** - total time between request and response. Max amount of time a request can perform is **29 seconds**
-    - **4XXError** - client side errors
-    - **5XXError** - server side errors
+    - **CacheHitCount** and **CacheMissCount** give information about the efficiency of the cache
+    - **Count** - the total number of API requests
+    - **IntegrationLatency** - the time between the request are relayed to the back-end and response is received by the API Gateway
+    - **Latency** - total time between request and response. Max amount of time a request can perform is **29 seconds**
+    - **4XXError** - client side errors
+    - **5XXError** - server side errors
 - Throttling
   - Global account limit by default is 10K request per second across all APIs
   - Soft limit, can be increased upon request

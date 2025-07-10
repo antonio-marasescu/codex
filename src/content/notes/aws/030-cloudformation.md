@@ -100,7 +100,7 @@ publishedAt: '2025-01-15'
 
 #### How to reference a parameter
 
-- The `Fn::Ref` function can be leveraged to reference parameters
+- The `Fn::Ref` function can be leveraged to reference parameters
 - Parameters can be used anywhere in a template.
 - The shorthand for this in YAML is !Ref
 - The function can also reference other elements within the template
@@ -110,7 +110,7 @@ publishedAt: '2025-01-15'
 - Mappings are fixed variables within your CloudFormation Template.
 - They’re very handy to differentiate between different environments (dev vs prod), regions (AWS regions), AMI types, etc
 - All the values are hardcoded within the template
-- We use `Fn::FindInMap` to return a named value from a specific key
+- We use `Fn::FindInMap` to return a named value from a specific key
 
 ### CloudFormation Outputs
 
@@ -124,7 +124,7 @@ publishedAt: '2025-01-15'
 
 - The logical ID is for you to choose. It’s how you name condition
 - The intrinsic function (logical) can be any of the following:
-  - `Fn::And` `Fn::Equals`
+  - `Fn::And` and `Fn::Equals`
   - `Fn::If`
   - `Fn::Not`
   - `Fn::Or`
@@ -133,27 +133,27 @@ publishedAt: '2025-01-15'
 ## CloudFormation Intrinsic Functions
 
 - Refs
-  - The `Fn::Ref` function can be leveraged to reference
+  - The `Fn::Ref` function can be leveraged to reference
     - Parameters => returns the value of the parameter
     - Resources => returns the physical ID of the underlying resource (ex: EC2 ID)
-  - The shorthand for this in YAML is `!Ref`
+  - The shorthand for this in YAML is `!Ref`
 - `Fn::GetAtt`
   - Attributes are attached to any resources you create
   - To know the attributes of your resources, the best place to look at is the documentation.
   - For example: the AZ of an EC2 machine
 - `Fn::FindInMap`
-  - We use `Fn::FindInMap` to return a named value from a specific key
+  - We use `Fn::FindInMap` to return a named value from a specific key
   - `!FindInMap [ MapName, TopLevelKey, SecondLevelKey ]`
 - `Fn::ImportValue`
   - Import values that are exported in other templates
-    - Use the `Fn::ImportValue` function
+    - Use the `Fn::ImportValue` function
 - `Fn::Join`
   - Join values with a delimiter
 - `Fn::Sub`
-  - `Fn::Sub`, or `!Sub` as a shorthand, is used to substitute variables from a text. It’s a very handy function that will allow you to fully customize your templates.
-  - For example, you can combine `Fn::Sub` with References or AWS Pseudo variables
+  - `Fn::Sub`, or `!Sub` as a shorthand, is used to substitute variables from a text. It’s a very handy function that will allow you to fully customize your templates.
+  - For example, you can combine `Fn::Sub` with References or AWS Pseudo variables
   - String must contain ${VariableName} and will substitute them
-- Condition Functions (`Fn::If`, `Fn::Not`, `Fn::Equals`, etc...)
+- Condition Functions (`Fn::If`, `Fn::Not`, `Fn::Equals`, etc...)
   - The logical ID is for you to choose. It’s how you name condition
   - The intrinsic function (logical) can be any of the following:
     - `Fn::And`

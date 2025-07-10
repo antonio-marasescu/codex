@@ -9,7 +9,7 @@ publishedAt: '2025-01-15'
 
 # Elastic Beanstalk
 
-*Elastic Beanstalk* is a developer centric view of deploying application on AWS.
+_Elastic Beanstalk_ is a developer centric view of deploying application on AWS.
 
 - A managed service
   - Instance configuration

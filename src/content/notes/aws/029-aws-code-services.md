@@ -204,11 +204,11 @@ Code Update -> Build -> Test -> Deploy
 ## Artifacts
 
 - Each pipeline stage can create ”artifacts”
-- **Artifacts** are Amazon S3 buckets that CodePipeline uses to store artifacts used by pipelines. When you first use the CodePipeline console in a region to create a pipeline, CodePipeline automatically generates this S3 bucket in the AWS region.
+- **Artifacts** are Amazon S3 buckets that CodePipeline uses to store artifacts used by pipelines. When you first use the CodePipeline console in a region to create a pipeline, CodePipeline automatically generates this S3 bucket in the AWS region.
 
 ## Troubleshooting
 
-- CodePipeline state changes happen in **AWS CloudWatch Events**, which can in return create SNS notifications.
+- CodePipeline state changes happen in **AWS CloudWatch Events**, which can in return create SNS notifications.
 - Ex: you can create events for failed pipelines • Ex: you can create events for cancelled stages
 - If CodePipeline fails a stage, your pipeline stops, and you can get information in the console
 - AWS CloudTrail can be used to audit AWS API calls
@@ -221,7 +221,7 @@ Code Commit is a fully managed source control service that enables companies to 
 
 **Notes:**
 
-- **Version Control** is the ability to understand changes that happened to the code over time (and possibly roll back)
+- **Version Control** is the ability to understand changes that happened to the code over time (and possibly roll back)
 - This is enabled by using a version control system such as Git
 - A git repository can live on your machine or on a central online repository
 - Benefits:

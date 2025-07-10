@@ -20,7 +20,7 @@ publishedAt: '2025-01-15'
 
 | Traditional databases                                     | NoSQL                                                         |
 | --------------------------------------------------------- | ------------------------------------------------------------- |
-| Traditional applications leverage RDBMS databases         | Non-relational, **distributed** databases                     |
+| Traditional applications leverage RDBMS databases         | Non-relational, **distributed** databases                     |
 | SQL query language                                        | Many different query languages, SQL can be one                |
 | Strong requirements about how the data should be modelled | All the data should be present in one row                     |
 | Ability to do joins, aggregations and computations        | Do not support join, can't perform aggregations such as "SUM" |
@@ -28,10 +28,10 @@ publishedAt: '2025-01-15'
 
 ## DynamoDB Basics
 
-- Made of **tables**
-- Each table has a **primary key**
+- Made of **tables**
+- Each table has a **primary key**
 - Each table can have inf. number of rows (items) (in theory)
-- Each item can have **attributes** (columns, but they can be nested)
+- Each item can have **attributes** (columns, but they can be nested)
 - Max size of an item is 400KB
 - Data types supported:
   - Scalar: String, Number, Binary, Boolean, Null
@@ -54,7 +54,7 @@ publishedAt: '2025-01-15'
   - **Write Capacity Units (WCU)**: throughput for writes
 - Option to setup auto-scaling of throughput to meet demand
 - Throughput can be exceeded temporarily using "burst credits"
-- If no burst credits are available, we get a **ProvisionedThroughputExceededException**
+- If no burst credits are available, we get a **ProvisionedThroughputExceededException**
   - We should use exponential back-off for retries in case get the exception above
 - WCU (Write Capacity Unit)
   - 1 WCU = 1 Write / Second for 1 KB
@@ -73,14 +73,14 @@ publishedAt: '2025-01-15'
 - Data is divided in partitions
 - Partition keys are hashed in order to know in which partition will the data go
 - To compute the number of partitions:
-  - Capacity: `(TOTAL RCU / 3000) + (TOTAL WCU / 1000)`
-  - Size: `(TOTAL SIZE / 10GB)`
-  - Total number of partitions: `CEILING(MAX(Capacity, Size))`
+  - Capacity: `(TOTAL RCU / 3000) + (TOTAL WCU / 1000)`
+  - Size: `(TOTAL SIZE / 10GB)`
+  - Total number of partitions: `CEILING(MAX(Capacity, Size))`
 - WCU and RCU are spread evenly between partitions!
 
 ## DynamoDB Throttling
 
-- If we exceed our RCU or WCU we get **ProvisionedThroughputExceededException**
+- If we exceed our RCU or WCU we get **ProvisionedThroughputExceededException**
 - Reasons:
   - Hot keys
   - Hot partition
@@ -94,9 +94,9 @@ publishedAt: '2025-01-15'
 
 ### Writing Data
 
-- **PutItem** - write data to DynamoDB (create data or full replace data)
+- **PutItem** - write data to DynamoDB (create data or full replace data)
   - Consumes WCU
-- **UpdateIem** - update data in DynamoDB (partial update of attributes)
+- **UpdateIem** - update data in DynamoDB (partial update of attributes)
   - Possibility to use Atomic Counters and increase them
 - **Conditional Writes**:
   - Accept a write/update only if some conditions are met
@@ -110,12 +110,12 @@ publishedAt: '2025-01-15'
   - Ability to perform conditional deletes
 - **DeleteTable**
   - Deletes the whole table
-  - Much quicker deletion than *DeleteItem*
+  - Much quicker deletion than _DeleteItem_
 
 ### Batch Writes
 
 - **BatchWriteIem**
-  - Up to 25 *PutItem* and/or *DeleteItem* in one call
+  - Up to 25 _PutItem_ and/or _DeleteItem_ in one call
   - Up to 16MB of data written
   - Up to 400KB or data per item
 - Batching allows to save latency by reducing the number of API calls
@@ -128,7 +128,7 @@ publishedAt: '2025-01-15'
   - Read based on the primary key
   - Primary key = HASH or HASH-RANGE (partition key + sort key)
   - Eventually consistent by default, but has an option to have strong consistency
-  - **ProjectionExpression** can be specified to include only certain attributes
+  - **ProjectionExpression** can be specified to include only certain attributes
 - **BatchGetItem**
   - Up to 100 items
   - Up to 16MB data
@@ -138,7 +138,7 @@ publishedAt: '2025-01-15'
   - PartitionKey value (_must be equals ("=") operator_)
   - SortKey value (operators: =, <, <= >, >=, Between, Begin) - optional
   - FilterExpression to further filter the data (this will happen on the client side)
-  - Returns up to 1MB of data or number of items specified by the **Limit**
+  - Returns up to 1MB of data or number of items specified by the **Limit**
   - Able to do pagination
   - We can query a table, secondary index or global secondary index
   - Efficient way to query DynamoDB!
@@ -146,16 +146,16 @@ publishedAt: '2025-01-15'
   - Scans the entire table and then filter data
   - Returns up to 1MB ot data - we can use pagination to keep reading
   - Consumes a lot of RCU
-  - Limit impact using **Limit** / reduce the size of the result in order to reduce costs
+  - Limit impact using **Limit** / reduce the size of the result in order to reduce costs
   - For faster performance we can use parallel scan (way more RCU!)
-  - Can we use a combination of *ProjectionExpression + FilterExpression* (no charge to RCU)
+  - Can we use a combination of _ProjectionExpression + FilterExpression_ (no charge to RCU)
   - Inefficient way to read data from DynamoDB!
 
 ## DynamoDB Indexes
 
 ### Local Secondary Index (LSI)
 
-- Alternate range key for the table, *local to the hash key*
+- Alternate range key for the table, _local to the hash key_
 - Up to 5 LSI/table
 - The sort key consist of exactly one scalar attribute
 - The attribute can be String, Number, Binary
@@ -176,13 +176,13 @@ publishedAt: '2025-01-15'
 ### Throttling
 
 - DynamoDB indexes can cause throttling
-  - GSI: **If writes are throttled in case of a GSI, the main table is throttled as well!** This can happen even if the WCU on the main table is just fine
+  - GSI: **If writes are throttled in case of a GSI, the main table is throttled as well!** This can happen even if the WCU on the main table is just fine
   - LSI: uses the same WCU and RCU on the main table, can not throttle the main table
 
 ## DynamoDB Concurrency Model
 
 - Conditional update/delete: ensures the item hasn't changed before altering it
-- This feature makes DynamoDB an **optimistic locking / concurrent** database
+- This feature makes DynamoDB an **optimistic locking / concurrent** database
 
 ## DynamoDB Accelerator (DAX)
 
@@ -190,7 +190,7 @@ publishedAt: '2025-01-15'
 - It can be activated without doing any code change on the application which uses the database
 - Writes go through DAX to DynamoDB
 - Micro second latency for cache reads & queries
-- Solves one big problems: **Hot Key problem** (too many requests for the same key)
+- Solves one big problems: **Hot Key problem** (too many requests for the same key)
 - By default: 5 min TTL for every item in the cache
 - Up to 10 nodes in the cluster
 - Multi AZ (3 nodes minimum recommended)
@@ -270,7 +270,7 @@ publishedAt: '2025-01-15'
 - Conditional writes
   - A write can only happen if a specific condition is met
   - First write will succeed, second write will fail because the condition wont be met
-  - Important: **data is not overridden**
+  - Important: **data is not overridden**
 - Atomic writes:
   - INCREASE BY or DECREASE BY writes
 - Batch writes:
@@ -284,7 +284,7 @@ publishedAt: '2025-01-15'
 - Conditional writes
   - A write can only happen if a specific condition is met
   - First write will succeed, second write will fail because the condition wont be met
-  - Important: **data is not overridden**
+  - Important: **data is not overridden**
 - Atomic writes:
   - INCREASE BY or DECREASE BY writes
 - Batch writes:
@@ -315,4 +315,4 @@ publishedAt: '2025-01-15'
 - Amazon DMS:
   - Used to migrate data from Mongo, Oracle, MySQL, S3 to DynamoDB
 - Local DynamoDB for development
-- Amazon DynamoDB Encryption Client. This *client-side encryption* library enables you to protect your table data before submitting it to DynamoDB. With server-side encryption, your data is encrypted in transit over an HTTPS connection, decrypted at the DynamoDB endpoint, and then re-encrypted before being stored in DynamoDB. Client-side encryption provides end-to-end protection for your data from its source to storage in DynamoDB.
+- Amazon DynamoDB Encryption Client. This _client-side encryption_ library enables you to protect your table data before submitting it to DynamoDB. With server-side encryption, your data is encrypted in transit over an HTTPS connection, decrypted at the DynamoDB endpoint, and then re-encrypted before being stored in DynamoDB. Client-side encryption provides end-to-end protection for your data from its source to storage in DynamoDB.

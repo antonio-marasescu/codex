@@ -19,21 +19,21 @@ Kinesis is a managed service service which makes it easy to collect and analyze 
 ```mermaid
 flowchart TD
 
-    A[Kinesis Data Streams] --> C
+    A[Kinesis Data Streams] --> C
 
-    B[Kinesis Firehose] --> C
+    B[Kinesis Firehose] --> C
 
-    C[(Kinesis Data Analytics)] --> D[Kinesis Data Streams]
+    C[(Kinesis Data Analytics)] --> D[Kinesis Data Streams]
 
-    C --> E[Kinesis Firehose]
+    C --> E[Kinesis Firehose]
 
-    E --> F[S3]
+    E --> F[S3]
 
-    E --> G[Redshift]
+    E --> G[Redshift]
 
-    D --> H[AWS Lambda]
+    D --> H[AWS Lambda]
 
-    D --> I[AWS Applications]
+    D --> I[AWS Applications]
 ```
 
 ## Overview

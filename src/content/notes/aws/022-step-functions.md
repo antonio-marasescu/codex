@@ -33,22 +33,22 @@ publishedAt: '2025-01-15'
   - Transient failures (example: network partition events)
 - By default: when a state reports an error, the execution of the Step Functions fails entirely
 - Failures can be retried:
-  - Exponential backoff: *IntervalSeconds*, *MaxAttempts*, *BackoffRate*
-  - Move on - Catch: *ErrorEquals*, *Next*
+  - Exponential backoff: _IntervalSeconds_, _MaxAttempts_, _BackoffRate_
+  - Move on - Catch: _ErrorEquals_, _Next_
 - Best practice: include data in the error message
 
 ## States
 
 The following types of states exist:
 
-- Pass (`"Type": "Pass"`) passes its input to its output, without performing work. `Pass` states are useful when constructing and debugging state machines.)
-- Task ((`"Type": "Task"`) represents a single unit of work performed by a state machine. A task performs work by using an activity or an AWS Lambda function, by integrating with other supported AWS services, or by invoking a third-party API, such as Stripe.)
+- Pass (`"Type": "Pass"`) passes its input to its output, without performing work. `Pass` states are useful when constructing and debugging state machines.)
+- Task ((`"Type": "Task"`) represents a single unit of work performed by a state machine. A task performs work by using an activity or an AWS Lambda function, by integrating with other supported AWS services, or by invoking a third-party API, such as Stripe.)
 - Choice ((`"Type": "Choice"`) adds conditional logic to a state machine)
 - Wait ((`"Type": "Wait"`) delays the state machine from continuing for a specified time)
-- Succeed ( (`"Type": "Succeed"`) stops an execution successfully)
-- Fail ((`"Type": "Fail"`) stops the execution of the state machine and marks it as a failure, unless it is caught by a `Catch` block.)
+- Succeed ( (`"Type": "Succeed"`) stops an execution successfully)
+- Fail ((`"Type": "Fail"`) stops the execution of the state machine and marks it as a failure, unless it is caught by a `Catch` block.)
 - Parallel ((`"Type": "Parallel"`) can be used to add separate branches of execution in your state machine.)
-- Map (state to run a set of workflow steps for each item in a dataset. The `Map` state's iterations run in parallel, which makes it possible to process a dataset quickly)
+- Map (state to run a set of workflow steps for each item in a dataset. The `Map` state's iterations run in parallel, which makes it possible to process a dataset quickly)
 
 ## Amazon State Languages
 
@@ -61,8 +61,8 @@ In the Amazon States Language, these fields filter and control the flow of JSON 
 - ResultPath (can be used to also add information regarding original state input)
 - OutputPath (enables you to select a portion of the state output to pass to the next state, if you don't specifiy it defaults to $)
 
-AWS Step Functions applies the `InputPath` field first, and then the `Parameters` field. You can first filter your raw input to a selection you want using `InputPath`, and then apply `Parameters` to manipulate that input further, or add new values. You can then use the `ResultSelector` field to manipulate the state's output before `ResultPath` is applied.
-Use `ResultPath` to combine a task result with task input, or to select one of these. The path you provide to `ResultPath` controls what information passes to the output.
+AWS Step Functions applies the `InputPath` field first, and then the `Parameters` field. You can first filter your raw input to a selection you want using `InputPath`, and then apply `Parameters` to manipulate that input further, or add new values. You can then use the `ResultSelector` field to manipulate the state's output before `ResultPath` is applied.
+Use `ResultPath` to combine a task result with task input, or to select one of these. The path you provide to `ResultPath` controls what information passes to the output.
 
 **Use ResultPath to:**
 

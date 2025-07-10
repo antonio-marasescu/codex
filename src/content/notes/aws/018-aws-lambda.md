@@ -153,7 +153,7 @@ aws lambda invoke --function-name hello-world --cli-binary-format raw-in-base64-
   - Serverless CRON job
   - CodePipeline state change
 - Invocation from S3 events:
-  - Events: *S3:ObjectCreated*, *S3:ObjectRemoved*, etc.
+  - Events: _S3:ObjectCreated_, _S3:ObjectRemoved_, etc.
   - Possible to do object filtering by name (\*.jpg)
   - Possible use case: generate thumbnails for newly uploaded images
   - S3 event notification typically deliver events in seconds, sometimes it can take longer
@@ -176,11 +176,11 @@ This happens when records needs to be polled from the source (e.g.: SQS queues, 
       - discard old events
         - restrict number of retries
         - split the batch on error (mainly used in case of timeout issues)
-        - discarded events can go to a *Destination*
+        - discarded events can go to a _Destination_
   - Queues (SQS):
     - Event source mapping uses long polling to poll the queue
     - Batch size: 1-10 messages
-    - Recommendation: set the queue visibility to *6x the timeout of the Lambda function*
+    - Recommendation: set the queue visibility to _6x the timeout of the Lambda function_
     - DLQ: set-up the DLQ on the queue, not on the Lambda
     - Lambda supports FIFO queues, scaling up to the number of active message groups
     - Lambda scales up to process a standard queue as fast as possible
@@ -239,14 +239,14 @@ This happens when records needs to be polled from the source (e.g.: SQS queues, 
 - Env. variables for X-Ray:
   - **\_X_AMZN_TRACE_ID**
   - **AWS_XRAY_CONTEXT_MISSING**
-  - **AWS_XRAY_DAEMON_ADDRESS** - X-Ray Daemon *IP_ADDRESS:PORT*
+  - **AWS_XRAY_DAEMON_ADDRESS** - X-Ray Daemon _IP_ADDRESS:PORT_
 
 ## Networking
 
 - By default: Lambda is launched outside of user VPC, so it can not access resources from inside of a private VPC
 - Lambda can be deployed in a VPC:
   - Lambda will create an ENI (Elastic Network Interface)
-  - Needed *AWSLambdaVPCAccessExecutionRole*
+  - Needed _AWSLambdaVPCAccessExecutionRole_
 - By default: Lambda in a user defined VPC can not access internet (even if the VPC is public). Solution: NAT Gateway / Instance, Lambda deployed in a private subnet
 - DynamoDB can be accessed via VPC endpoints (or via public internet)
 - CloudWatch logs work in private subnet without NAT
@@ -263,7 +263,7 @@ This happens when records needs to be polled from the source (e.g.: SQS queues, 
   - Temporary runtime env. that initializes any external dependency
   - Great for DB connections, HTTP clients
   - Is maintained for some time in anticipation of another Lambda invocation
-  - Does include the **/tmp** directory (512MB disk space)
+  - Does include the **/tmp** directory (512MB disk space)
   - Recommended: initialize DB connections outside of function handler, it can be reused for next execution
   - For permanent persistence use S3 (not **/tmp**)!
 - Concurrency:
@@ -292,21 +292,21 @@ This happens when records needs to be polled from the source (e.g.: SQS queues, 
 - Code can be defined in-line (for very simple functions)
 - Inline functions can not include dependencies
 - For more complex functions:
-  - We can use the **Code.ZipFile** property
+  - We can use the **Code.ZipFile** property
   - We can use S3 where we should refer to the location of the zip file in a bucket
-    - Note: if we update the code in S3 but don't update the S3Bucket, S3Key or S3ObjectVersion in the template, CloudFormation wont update the function, **versioning is import**
+    - Note: if we update the code in S3 but don't update the S3Bucket, S3Key or S3ObjectVersion in the template, CloudFormation wont update the function, **versioning is import**
 
 ## Layers
 
 - Custom Runtimes for Lambda, example:
-  - C++ [https://github.com/awslabs/aws-lambda-cpp](https://github.com/itsmostafa/certified-aws-developer-associate-notes/blob/master/3-aws-serverless/aws-lambda-cpp)
-  - Rust [https://github.com/awslabs/aws-lambda-rust-runtime](https://github.com/itsmostafa/certified-aws-developer-associate-notes/blob/master/3-aws-serverless/aws-lambda-rust)
+  - C++ [https://github.com/awslabs/aws-lambda-cpp](https://github.com/itsmostafa/certified-aws-developer-associate-notes/blob/master/3-aws-serverless/aws-lambda-cpp)
+  - Rust [https://github.com/awslabs/aws-lambda-rust-runtime](https://github.com/itsmostafa/certified-aws-developer-associate-notes/blob/master/3-aws-serverless/aws-lambda-rust)
 - Externalize dependencies to re-use them in case of bigger dependency packages
 - Another function could reuse layers
 
 ## Versions and Aliases
 
-- When we work on a Lambda function, we work on *$LATEST* version
+- When we work on a Lambda function, we work on _$LATEST_ version
 - When we are ready to publish, we create a new version
 - Versions are immutable (can not change to code, env. variables of anything after a version is published)
 - Versions have increasing number
