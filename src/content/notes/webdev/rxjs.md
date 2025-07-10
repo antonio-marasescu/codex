@@ -1,5 +1,5 @@
 ---
-title: 'RxJS STC'
+title: 'RxJS'
 slug: 'rxjs'
 description: 'Comprehensive guide to RxJS observables, subjects, and operators'
 category: 'Webdev'
