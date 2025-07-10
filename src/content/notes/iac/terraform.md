@@ -279,6 +279,102 @@ Steps:
 - add terraform backend inside a file called "terraform.tf" (good practice for holding configuration of terraform).
 - do `terraform init` and `terraform apply` locally to initialize the state
 
-## Functions and Conditional Expressions
+## 7. Functions and Conditional Expressions
 
-## Modules
+### 7.1 Built-in Functions
+
+Terraform provides many built-in functions for data manipulation:
+
+```
+# String functions
+length("hello")           # 5
+upper("hello")           # "HELLO"
+lower("WORLD")           # "world"
+replace("hello world", "world", "terraform")  # "hello terraform"
+
+# Numeric functions
+max(1, 2, 3)            # 3
+min(1, 2, 3)            # 1
+abs(-5)                  # 5
+
+# Collection functions
+length(["a", "b", "c"]) # 3
+contains(["a", "b"], "a") # true
+keys({a = 1, b = 2})    # ["a", "b"]
+values({a = 1, b = 2})  # [1, 2]
+
+# Type conversion
+tostring(123)            # "123"
+tonumber("123")          # 123
+tobool("true")           # true
+```
+
+### 7.2 Conditional Expressions
+
+Use conditional expressions to create dynamic values:
+
+```
+variable "environment" {
+  type = string
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-abc123"
+  instance_type = var.environment == "production" ? "t3.large" : "t3.micro"
+
+  tags = {
+    Name = var.environment == "production" ? "prod-server" : "dev-server"
+  }
+}
+```
+
+## 8. Modules
+
+Modules are reusable Terraform configurations that can be called by other configurations.
+
+### 8.1 Module Structure
+
+```
+module-name/
+├── main.tf          # Main configuration
+├── variables.tf     # Input variables
+├── outputs.tf       # Output values
+└── README.md        # Documentation
+```
+
+### 8.2 Using Modules
+
+```
+module "vpc" {
+  source = "./modules/vpc"
+
+  vpc_cidr = "10.0.0.0/16"
+  environment = "production"
+}
+
+module "ec2" {
+  source = "./modules/ec2"
+
+  instance_type = "t3.micro"
+  vpc_id = module.vpc.vpc_id
+}
+```
+
+### 8.3 Module Sources
+
+- Local: `source = "./modules/vpc"`
+- Git: `source = "git::https://example.com/vpc.git"`
+- Registry: `source = "hashicorp/vpc/aws"`
+- HTTP: `source = "https://example.com/vpc.zip"`
+
+### 8.4 Module Best Practices
+
+- Use semantic versioning for modules
+- Document all variables and outputs
+- Keep modules focused on a single responsibility
+- Use consistent naming conventions
+- Test modules independently before publishing
+
+```
+
+```
