@@ -5,7 +5,7 @@ export enum NoteCategory {
   Cloud = 'Cloud',
   Iac = 'Iac',
   Webdev = 'Webdev',
-  Llm = 'Llm',
+  LLM = 'LLM',
   Investing = 'Investing',
   All = 'All'
 }
