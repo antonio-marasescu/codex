@@ -46,8 +46,8 @@ export class InfraStack extends Stack {
         }
       ],
       defaultRootObject: 'index.html',
-      comment: 'Portfolio Website Cloudfront Distribution',
-      domainNames: [`www.${props.websiteDomainName}`],
+      comment: 'Codex Website Cloudfront Distribution',
+      domainNames: [`${props.websiteDomainName}`],
       certificate: Certificate.fromCertificateArn(
         this,
         CloudfrontDistributionCertificateId,
