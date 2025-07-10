@@ -6,11 +6,10 @@ import { NotesCategoriesFilterComponent } from '../../shared/components/features
 import { startWith } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NoteCategory, NotePost } from '../../shared/types/content/note.types';
-import { AnimateOnScroll } from 'primeng/animateonscroll';
 
 @Component({
   selector: 'app-notes-overview',
-  imports: [NotesPostPreviewComponent, NotesCategoriesFilterComponent, AnimateOnScroll],
+  imports: [NotesPostPreviewComponent, NotesCategoriesFilterComponent],
   template: `
     <div class="w-full py-8">
       @let notes = notesByCategory();
@@ -27,13 +26,7 @@ import { AnimateOnScroll } from 'primeng/animateonscroll';
                 </h2>
                 <div class="grid gap-6">
                   @for (note of notes; track note.slug) {
-                    <app-notes-post-preview
-                      [notePost]="note"
-                      pAnimateOnScroll
-                      [once]="true"
-                      enterClass="animate-enter fade-in-0 slide-in-from-b-4 animate-duration-700"
-                      leaveClass="animate-leave fade-out"
-                    />
+                    <app-notes-post-preview [notePost]="note" />
                   }
                 </div>
               </section>

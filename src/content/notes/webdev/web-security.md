@@ -1,6 +1,6 @@
 ---
 title: 'Web Development Security'
-slug: 'security'
+slug: 'web-security'
 description: 'Security concepts and best practices for web development'
 category: 'Webdev'
 tags: ['security', 'csrf', 'xss', 'web-security']

@@ -26,7 +26,7 @@ import { NotePost } from '../../../types/content/note.types';
         <div class="grid gap-8">
           <div>{{ notePost().description }}</div>
           @if (notePost().tags) {
-            <div class="w-full flex flex-row-reverse gap-2">
+            <div class="w-full flex flex-wrap flex-row-reverse gap-2">
               @for (tag of notePost().tags; track tag) {
                 <p-tag>{{ tag }}</p-tag>
               }
