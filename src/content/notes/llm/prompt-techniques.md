@@ -4,7 +4,7 @@ slug: 'prompt-techniques'
 description: 'Comprehensive guide to prompt engineering techniques for Large Language Models'
 category: 'LLM'
 tags: ['prompt-engineering', 'llm', 'ai', 'guidelines', 'techniques']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## Guidelines

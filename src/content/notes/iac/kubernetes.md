@@ -1,10 +1,10 @@
 ---
 title: 'Kubernetes Overview'
-slug: 'kubernetes-overview'
+slug: 'kubernetes'
 description: 'Introduction to Kubernetes container orchestration platform'
 category: 'Iac'
 tags: ['kubernetes', 'container-orchestration', 'devops', 'k8s']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## Definition

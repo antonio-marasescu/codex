@@ -4,7 +4,7 @@ slug: 'details-on-etf'
 description: 'Comprehensive guide to Exchange Traded Funds including types, analysis, and investment strategies'
 category: 'Investing'
 tags: ['etf', 'investing', 'finance', 'mutual-funds', 'portfolio']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## Definitions

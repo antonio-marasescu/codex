@@ -4,7 +4,7 @@ slug: 'llm-techniques'
 description: 'Overview of techniques for working with Large Language Models including RAG, vector databases, and frameworks'
 category: 'LLM'
 tags: ['llm', 'rag', 'vector-databases', 'langchain']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## RAG (Retrieval-Augmented Generation)

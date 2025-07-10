@@ -3,7 +3,7 @@ title: 'LLM Use Cases for Developers'
 slug: 'llm-usecase-for-developers'
 description: 'My thoughts, opinions and rules on how LLMs can improve your developer experience'
 tags: ['llm', 'ai', 'prompt-engineering', 'guidelines']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 This document outlines practical use cases for integrating Large Language Models (LLMs) into your software development workflow.

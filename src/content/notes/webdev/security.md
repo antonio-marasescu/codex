@@ -1,4 +1,11 @@
-# Web Development Security
+---
+title: 'Web Development Security'
+slug: 'security'
+description: 'Security concepts and best practices for web development'
+category: 'Webdev'
+tags: ['security', 'csrf', 'xss', 'web-security']
+publishedAt: '2025-07-10'
+---
 
 ## Content
 

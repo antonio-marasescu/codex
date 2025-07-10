@@ -1,4 +1,11 @@
-# RxJs STC
+---
+title: 'RxJS STC'
+slug: 'rxjs'
+description: 'Comprehensive guide to RxJS observables, subjects, and operators'
+category: 'Webdev'
+tags: ['rxjs', 'observables', 'angular', 'reactive-programming']
+publishedAt: '2025-07-10'
+---
 
 ## What is the difference between RxJS Observables and Promises?
 

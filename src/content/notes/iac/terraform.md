@@ -4,7 +4,7 @@ slug: 'terraform'
 description: 'Introduction to Terraform infrastructure as code tool'
 category: 'Iac'
 tags: ['terraform', 'infrastructure-as-code', 'iac', 'devops']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## 1. Commands

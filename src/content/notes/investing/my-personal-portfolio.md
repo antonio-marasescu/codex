@@ -4,7 +4,7 @@ slug: 'my-personal-portfolio'
 description: 'Personal investment portfolio allocation and analysis of selected ETFs'
 category: 'Investing'
 tags: ['portfolio', 'investing', 'etf', 'allocation', 'personal-finance']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## Allocation Summary

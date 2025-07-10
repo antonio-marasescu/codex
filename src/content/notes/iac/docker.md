@@ -4,7 +4,7 @@ slug: 'docker-overview'
 description: 'Introduction to Docker containers and containerization concepts'
 category: 'Iac'
 tags: ['docker', 'containers', 'containerization', 'devops']
-publishedAt: '2024-01-12'
+publishedAt: '2025-07-10'
 ---
 
 ## OS Kernel

@@ -1,4 +1,11 @@
-# Javascript STC
+---
+title: 'JavaScript'
+slug: 'javascript'
+description: 'Comprehensive guide to JavaScript fundamentals, async programming, and browser APIs'
+category: 'Webdev'
+tags: ['javascript', 'async', 'event-loop', 'web-workers', 'service-workers']
+publishedAt: '2025-07-10'
+---
 
 Javascript is an interpreted language created by Brendan Eich in 1995.
 

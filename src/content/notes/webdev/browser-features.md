@@ -1,4 +1,11 @@
-# Browser Features STC
+---
+title: 'Browser Features'
+slug: 'browser-features'
+description: 'Overview of browser storage APIs and client-side data management'
+category: 'Webdev'
+tags: ['browser', 'storage', 'cookies', 'localstorage', 'indexeddb']
+publishedAt: '2025-07-10'
+---
 
 ## Cookies
 
