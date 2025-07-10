@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';
 import { InputText } from 'primeng/inputtext';
@@ -13,6 +13,7 @@ import { serializeStandardContentPreview, standardContentSort } from '../../util
 import { Ripple } from 'primeng/ripple';
 import { Router } from '@angular/router';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-search-dialog',
@@ -34,10 +35,11 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
       </p-iconfield>
       <p-divider />
       <section class="flex flex-col gap-2">
-        @for (item of filteredPosts(); track item.slug) {
+        @for (item of filteredPosts(); track item.slug; let i = $index) {
           <article
             tabindex="0"
             class="w-full flex items-center p-2 gap-4 cursor-pointer hover:bg-primary"
+            [class.bg-primary]="selectedIndex() === i"
             (click)="navigateToPost(item)"
             (keydown.enter)="navigateToPost(item)"
             (keydown.space)="navigateToPost(item)"
@@ -63,6 +65,8 @@ export class SearchDialogComponent {
   protected searchFilterControl = new FormControl<string>('', { nonNullable: true });
   protected notePosts = this.notePostsService.getPosts();
   protected blogPosts = this.blogPostsService.getPosts();
+  protected selectedIndex = signal<number>(0);
+
   protected allPosts = computed(() => {
     const notes = this.notePosts();
     const blogs = this.blogPosts();
@@ -86,6 +90,30 @@ export class SearchDialogComponent {
 
   private minimizeResult(items: StandardContent[]): StandardContent[] {
     return items.sort(standardContentSort).slice(0, 5);
+  }
+
+  @HostListener('keydown', ['$event'])
+  protected handleKeydown(event: KeyboardEvent): void {
+    const posts = this.filteredPosts();
+    if (posts.length === 0) return;
+
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this.selectedIndex.set(Math.min(this.selectedIndex() + 1, posts.length - 1));
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this.selectedIndex.set(Math.max(this.selectedIndex() - 1, 0));
+        break;
+      case 'Enter':
+        event.preventDefault();
+        const selectedPost = posts[this.selectedIndex()];
+        if (selectedPost) {
+          this.navigateToPost(selectedPost);
+        }
+        break;
+    }
   }
 
   protected async navigateToPost(post: StandardContent): Promise<void> {
