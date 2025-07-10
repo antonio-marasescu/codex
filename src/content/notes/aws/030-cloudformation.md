@@ -2,7 +2,7 @@
 title: 'AWS CloudFormation'
 slug: '030-cloudformation'
 description: 'Complete guide to AWS CloudFormation for infrastructure as code'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'cloudformation', 'iac', 'infrastructure-as-code', 'templates']
 publishedAt: '2025-01-15'
 ---

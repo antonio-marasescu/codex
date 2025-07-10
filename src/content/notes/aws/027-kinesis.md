@@ -2,7 +2,7 @@
 title: 'AWS Kinesis'
 slug: '027-kinesis'
 description: 'Complete guide to AWS Kinesis for real-time data streaming'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'kinesis', 'streaming', 'real-time', 'data', 'analytics']
 publishedAt: '2025-01-15'
 ---

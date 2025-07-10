@@ -2,7 +2,7 @@
 title: 'AWS Step Functions'
 slug: '022-step-functions'
 description: 'Complete guide to AWS Step Functions for workflow orchestration'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'step-functions', 'workflow', 'orchestration', 'state-machines']
 publishedAt: '2025-01-15'
 ---

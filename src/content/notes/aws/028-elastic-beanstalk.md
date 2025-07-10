@@ -2,7 +2,7 @@
 title: 'AWS Elastic Beanstalk'
 slug: '028-elastic-beanstalk'
 description: 'Complete guide to AWS Elastic Beanstalk for application deployment'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'elastic-beanstalk', 'paas', 'deployment', 'application-platform']
 publishedAt: '2025-01-15'
 ---

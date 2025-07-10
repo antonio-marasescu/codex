@@ -2,7 +2,7 @@
 title: 'AWS Aurora Database'
 slug: '035-aurora-database'
 description: 'Guide to AWS Aurora managed database service'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'aurora', 'database', 'mysql', 'postgresql', 'rds']
 publishedAt: '2025-01-15'
 ---

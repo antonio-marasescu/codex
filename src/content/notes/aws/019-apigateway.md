@@ -2,7 +2,7 @@
 title: 'AWS API Gateway'
 slug: '019-apigateway'
 description: 'Complete guide to AWS API Gateway for API management'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'api-gateway', 'api', 'rest', 'websocket', 'authorization']
 publishedAt: '2025-01-15'
 ---

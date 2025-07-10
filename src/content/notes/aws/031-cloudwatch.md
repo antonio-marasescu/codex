@@ -2,7 +2,7 @@
 title: 'AWS CloudWatch'
 slug: '031-cloudwatch'
 description: 'Complete guide to AWS CloudWatch monitoring and logging'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'cloudwatch', 'monitoring', 'logging', 'metrics', 'alarms']
 publishedAt: '2025-01-15'
 ---

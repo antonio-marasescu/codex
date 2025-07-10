@@ -2,7 +2,7 @@
 title: 'AWS Route 53'
 slug: '017-aws-route-53'
 description: 'Complete guide to AWS Route 53 DNS and domain management'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'route-53', 'dns', 'domain', 'health-checks', 'routing']
 publishedAt: '2025-01-15'
 ---

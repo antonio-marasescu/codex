@@ -1,8 +1,8 @@
 ---
 title: 'AWS Cloud Monitoring'
-slug: '010-aws-cloud-monitoring'
+slug: '011-aws-cloud-monitoring'
 description: 'Guide to AWS monitoring and observability services'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'monitoring', 'cloudwatch', 'observability', 'logging']
 publishedAt: '2025-01-15'
 ---

@@ -1,8 +1,8 @@
 ---
 title: 'AWS Machine Learning Services'
-slug: '013-aws-machine-learning'
+slug: '014-aws-machine-learning'
 description: 'Overview of AWS machine learning and AI services'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'machine-learning', 'ai', 'sagemaker', 'comprehend', 'rekognition']
 publishedAt: '2025-01-15'
 ---

@@ -2,7 +2,7 @@
 title: 'AWS Lambda'
 slug: '018-aws-lambda'
 description: 'Complete guide to AWS Lambda serverless computing'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'lambda', 'serverless', 'functions', 'event-driven']
 publishedAt: '2025-01-15'
 ---

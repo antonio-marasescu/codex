@@ -2,7 +2,7 @@
 title: 'AWS Athena'
 slug: '033-aws-athena'
 description: 'Guide to AWS Athena for serverless SQL querying'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'athena', 'sql', 'query', 'serverless', 'analytics']
 publishedAt: '2025-01-15'
 ---

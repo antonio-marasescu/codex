@@ -1,8 +1,8 @@
 ---
 title: 'AWS Infrastructure Management'
-slug: '007-aws-infrastructure-management'
+slug: '008-aws-infrastructure-management'
 description: 'Guide to AWS infrastructure management and deployment tools'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'infrastructure', 'management', 'deployment', 'automation']
 publishedAt: '2025-01-15'
 ---

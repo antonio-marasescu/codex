@@ -2,7 +2,7 @@
 title: 'AWS AppSync'
 slug: '024-app-sync'
 description: 'Guide to AWS AppSync for GraphQL API management'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'appsync', 'graphql', 'api', 'real-time']
 publishedAt: '2025-01-15'
 ---

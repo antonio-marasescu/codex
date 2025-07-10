@@ -2,7 +2,7 @@
 title: 'AWS Architecting & Ecosystem'
 slug: '016-aws-architecting-and-ecosystem'
 description: 'Guide to AWS architecture patterns and ecosystem services'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'architecture', 'ecosystem', 'patterns', 'best-practices']
 publishedAt: '2025-01-15'
 ---

@@ -1,8 +1,8 @@
 ---
 title: 'AWS Compute & Storage Services'
-slug: '002-compute-storage'
+slug: '003-compute-storage'
 description: 'Comprehensive guide to AWS EBS, EFS, and storage solutions'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'ebs', 'efs', 'storage', 'compute', 'fsx']
 publishedAt: '2025-01-15'
 ---

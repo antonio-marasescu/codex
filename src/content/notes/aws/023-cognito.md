@@ -2,7 +2,7 @@
 title: 'AWS Cognito'
 slug: '023-cognito'
 description: 'Complete guide to AWS Cognito for user authentication and identity management'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'cognito', 'authentication', 'identity', 'user-pools', 'identity-pools']
 publishedAt: '2025-01-15'
 ---

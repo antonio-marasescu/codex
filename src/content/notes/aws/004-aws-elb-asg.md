@@ -1,8 +1,8 @@
 ---
 title: 'AWS Elastic Load Balancer (ELB) & Auto Scaling Groups (ASG)'
-slug: '003-aws-elb-asg'
+slug: '004-aws-elb-asg'
 description: 'Complete guide to AWS load balancing and auto-scaling capabilities'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'elb', 'alb', 'nlb', 'asg', 'load-balancing', 'auto-scaling']
 publishedAt: '2025-01-15'
 ---

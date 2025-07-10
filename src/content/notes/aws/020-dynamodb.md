@@ -2,7 +2,7 @@
 title: 'AWS DynamoDB'
 slug: '020-dynamodb'
 description: 'Complete guide to AWS DynamoDB NoSQL database'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'dynamodb', 'nosql', 'database', 'ddb', 'key-value']
 publishedAt: '2025-01-15'
 ---

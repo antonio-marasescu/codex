@@ -2,7 +2,7 @@
 title: 'AWS OpenSearch'
 slug: '034-aws-opensearch'
 description: 'Guide to AWS OpenSearch for search and analytics'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'opensearch', 'elasticsearch', 'search', 'analytics', 'logging']
 publishedAt: '2025-01-15'
 ---

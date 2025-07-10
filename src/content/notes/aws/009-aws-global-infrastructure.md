@@ -1,8 +1,8 @@
 ---
 title: 'AWS Global Infrastructure'
-slug: '008-aws-global-infrastructure'
+slug: '009-aws-global-infrastructure'
 description: 'Overview of AWS global infrastructure and regions'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'infrastructure', 'regions', 'availability-zones', 'edge-locations']
 publishedAt: '2025-01-15'
 ---

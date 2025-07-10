@@ -2,7 +2,7 @@
 title: 'AWS Identity Access Management (IAM) & Organizations'
 slug: '001-aws-identity-access-and-organizations'
 description: 'Comprehensive guide to AWS IAM, security policies, and multi-account management'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'iam', 'security', 'organizations', 'sts', 'directory-service']
 publishedAt: '2025-01-15'
 ---

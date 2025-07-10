@@ -2,7 +2,7 @@
 title: 'AWS Code Services'
 slug: '029-aws-code-services'
 description: 'Complete guide to AWS developer tools and CI/CD services'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'codecommit', 'codebuild', 'codedeploy', 'codepipeline', 'cicd']
 publishedAt: '2025-01-15'
 ---

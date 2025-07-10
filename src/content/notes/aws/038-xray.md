@@ -2,7 +2,7 @@
 title: 'AWS X-Ray'
 slug: '038-xray'
 description: 'Guide to AWS X-Ray for distributed tracing'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'x-ray', 'tracing', 'monitoring', 'distributed-systems']
 publishedAt: '2025-01-15'
 ---

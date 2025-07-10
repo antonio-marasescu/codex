@@ -1,8 +1,8 @@
 ---
 title: 'AWS Security Services'
-slug: '012-aws-security'
+slug: '013-aws-security'
 description: 'Comprehensive guide to AWS security services and best practices'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'security', 'kms', 'shield', 'guardduty', 'macie']
 publishedAt: '2025-01-15'
 ---

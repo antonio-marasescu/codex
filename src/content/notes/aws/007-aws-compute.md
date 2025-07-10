@@ -1,8 +1,8 @@
 ---
 title: 'AWS Compute Services'
-slug: '006-aws-compute'
+slug: '007-aws-compute'
 description: 'Overview of AWS compute services and container solutions'
-category: 'Cloud'
+category: 'AWS'
 tags: ['aws', 'compute', 'ecs', 'lambda', 'containers', 'serverless']
 publishedAt: '2025-01-15'
 ---
