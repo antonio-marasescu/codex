@@ -18,7 +18,7 @@ publishedAt: '2026-08-10'
 - OAuth = access. Issues access tokens. Doesn't say who the user is.
 - OIDC = identity. Built on top of OAuth. Issues ID tokens (a statement about whom the user is).
 
-## Security Concepts
+## Notions
 
 ### Roles in OAuth
 
@@ -64,6 +64,85 @@ PKCE (pronounced “pixy”) is a security extension to OAuth 2.0 for public cli
 6. Authorization Server verifies the verifier matches the stored challenge
 
 This proves the same client that started the flow is completing it, even if the authorization code is intercepted.
+
+### JWT
+
+JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+
+It the most usual way of transmitting information in authentication flows (but not the only one).
+
+### Format
+
+The format is as follows:
+
+```text
+Header.Payload.Signature
+```
+
+![JWT Structure](/assets/notes/auth/jwt-structure.png)
+
+- Header: contains the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA
+
+```text
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+- Payload: contains the claims. Claims are statements about an entity (typically, the user) and additional data. It usually contains a list of [Registered Claim Names](https://datatracker.ietf.org/doc/html/rfc7519#section-4.1)
+
+```text
+{
+  "sub": "1234567890",
+  "iss": "my-auth-server",
+  "aud": "my-api",
+  "exp": 12422353535,
+  "name": "John Doe",
+  "admin": true
+}
+```
+
+- Signature: is the signed part, proving that payload has not being modified. To create it you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that
+
+#### Types of JWT
+
+- Access Token: is the string used when making authenticated requests to the API. The string itself has no meaning to the application using it, but represents that the user has authorized a third-party application to access their account. The token has a corresponding duration of access, scope, and potentially other information the server needs
+- Refresh Token: is a string that is used to get a new access token when an access token expires
+- ID Token: is a string used for providing additional information regarding the identity of a User, it is part of the OIDC flow.
+- Authorization Code: is an intermediate token used in the server-side app flow. An authorization code is returned to the client after the authorization step, and then the client exchanges it for an access token
+
+## Authentication Flows
+
+### Implicit Flow
+
+> Notice: This flow is considered deprecated, instead the new security recommendation is to use the `Authorization Code Flow`
+
+#### Diagram
+
+#### HTTP Requests
+
+### Authorization Code Flow
+
+#### Refresh Tokens
+
+### Client Credential Flow
+
+### Client Credentials Grant
+
+### Device Flow
+
+## OAuth per Application
+
+### Web Server Application
+
+### Native Application
+
+### Single Page Application
+
+### IoT Applications
+
+## OpenID Connect
 
 ## Resources
 
