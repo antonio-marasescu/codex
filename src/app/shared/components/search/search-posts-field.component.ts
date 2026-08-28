@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, inject } from '@angular/core';
-import { DialogService } from 'primeng/dynamicdialog';
-import { Button } from 'primeng/button';
+import { Dialog } from '@angular/cdk/dialog';
+import { Button } from 'vellum-lib';
 import { SearchDialogComponent } from './search-dialog.component';
 
 @Component({
@@ -8,35 +8,28 @@ import { SearchDialogComponent } from './search-dialog.component';
   imports: [Button],
   template: `
     <div>
-      <p-button
-        size="small"
-        variant="outlined"
-        [rounded]="true"
-        severity="secondary"
-        (onClick)="showDialog()"
+      <vlm-button
+        [size]="'sm'"
+        [variant]="'outlined'"
+        [theme]="'secondary'"
+        (clicked)="showDialog()"
       >
-        <div class="flex flex-row items-center gap-2">
-          <span class="material-icons-outlined small">search</span>
-          <span class="text-sm">Search </span>
-          <span class="text-[0.5rem] font-light">CTRL+K</span>
-        </div>
-      </p-button>
+        <span class="material-icons-outlined small" preIcon>search</span>
+        <span class="text-sm">Search </span>
+        <span class="text-[0.5rem] font-light">CTRL+K</span>
+      </vlm-button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchPostsFieldComponent {
-  private readonly dialogService = inject(DialogService);
+  private readonly dialog = inject(Dialog);
 
   protected showDialog(): void {
-    this.dialogService.open(SearchDialogComponent, {
-      header: 'Search for a post',
+    this.dialog.open(SearchDialogComponent, {
       width: '50vw',
-      closable: true,
-      modal: true,
-      breakpoints: {
-        '768px': '90vw'
-      }
+      maxWidth: '90vw',
+      panelClass: 'search-dialog-panel'
     });
   }
 

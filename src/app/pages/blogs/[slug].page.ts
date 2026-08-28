@@ -1,19 +1,16 @@
-import { Component, effect, inject, Injector, runInInjectionContext } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { NotePostsService } from '../../shared/services/note-posts.service';
-import { ContentFile, injectContent, MarkdownComponent } from '@analogjs/content';
-import { Chip, Panel } from 'vellum-lib';
-import { NotePost } from '../../shared/types/content/note.types';
-import { Observable, of } from 'rxjs';
+import { Chip } from 'vellum-lib';
+import { injectContent, MarkdownComponent } from '@analogjs/content';
+import { BlogPost } from '../../shared/types/content/blog.types';
 
 @Component({
-  selector: 'app-note-detail',
-  imports: [DatePipe, Chip, AsyncPipe, MarkdownComponent],
+  selector: 'app-blog-detail',
+  imports: [DatePipe, Chip, MarkdownComponent, AsyncPipe],
   template: `
     <div class="container mx-auto px-4 py-8">
       <div class="max-w-4xl mx-auto">
-        @let post = notePostContent$ | async;
+        @let post = blogPostContent$ | async;
         @if (post) {
           <article class="w-full">
             <div
@@ -46,25 +43,6 @@ import { Observable, of } from 'rxjs';
     </div>
   `
 })
-export default class NoteDetailComponent {
-  private route = inject(ActivatedRoute);
-  private notePostsService = inject(NotePostsService);
-  private readonly slug = this.route.snapshot.params['slug'];
-  private readonly injector = inject(Injector);
-  protected notePost = this.notePostsService.getPostBySlug(this.slug);
-  protected notePostContent$: Observable<ContentFile<NotePost | Record<string, never>>> = of();
-
-  constructor() {
-    effect(() => {
-      const note = this.notePost();
-      if (note) {
-        runInInjectionContext(this.injector, () => {
-          this.notePostContent$ = injectContent<NotePost>({
-            param: 'slug',
-            subdirectory: `notes/${note.folder}`
-          });
-        });
-      }
-    });
-  }
+export default class BlogDetailComponent {
+  readonly blogPostContent$ = injectContent<BlogPost>({ param: 'slug', subdirectory: 'blog' });
 }

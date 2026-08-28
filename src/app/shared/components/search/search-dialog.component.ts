@@ -1,39 +1,33 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { IconField } from 'primeng/iconfield';
-import { InputIcon } from 'primeng/inputicon';
-import { InputText } from 'primeng/inputtext';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  linkedSignal,
+  signal
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Divider } from 'primeng/divider';
+import { Divider, Input } from 'vellum-lib';
 import { NotePostsService } from '../../services/note-posts.service';
 import { BlogPostsService } from '../../services/blog-posts.service';
 import { StandardContent } from '../../types/content/content.types';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { startWith } from 'rxjs';
 import { serializeStandardContentPreview, standardContentSort } from '../../utils/content.utils';
-import { Ripple } from 'primeng/ripple';
 import { Router } from '@angular/router';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogRef } from '@angular/cdk/dialog';
 import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-search-dialog',
-  imports: [IconField, InputIcon, InputText, ReactiveFormsModule, Divider, Ripple],
+  imports: [Input, ReactiveFormsModule, Divider],
   template: `
     <div class="flex flex-col gap-4">
-      <p-iconfield class="w-full">
-        <p-inputicon>
-          <span class="material-icons-outlined small">search</span>
-        </p-inputicon>
-        <input
-          type="text"
-          pInputText
-          placeholder="Search"
-          variant="outlined"
-          class="w-full"
-          [formControl]="searchFilterControl"
-        />
-      </p-iconfield>
-      <p-divider />
+      <vlm-input [id]="'search-input'" [(value)]="searchValue" placeholder="Search" class="w-full">
+        <span class="material-icons-outlined small" preIcon>search</span>
+      </vlm-input>
+      <vlm-divider />
       <section class="flex flex-col gap-2">
         @for (item of filteredPosts(); track item.slug; let i = $index) {
           <article
@@ -43,7 +37,6 @@ import { HostListener } from '@angular/core';
             (click)="navigateToPost(item)"
             (keydown.enter)="navigateToPost(item)"
             (keydown.space)="navigateToPost(item)"
-            pRipple
           >
             <span class="material-icons-outlined">
               {{ item.type === 'blog' ? 'article' : 'note' }}
@@ -58,7 +51,7 @@ import { HostListener } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchDialogComponent {
-  private readonly dialogRef = inject(DynamicDialogRef);
+  private readonly dialogRef = inject(DialogRef);
   private readonly router = inject(Router);
   private readonly notePostsService = inject(NotePostsService);
   private readonly blogPostsService = inject(BlogPostsService);
@@ -66,6 +59,14 @@ export class SearchDialogComponent {
   protected notePosts = this.notePostsService.getPosts();
   protected blogPosts = this.blogPostsService.getPosts();
   protected selectedIndex = signal<number>(0);
+
+  protected searchValue = linkedSignal(() => this.searchFilterControl.value);
+
+  constructor() {
+    effect(() => {
+      this.searchFilterControl.setValue(this.searchValue());
+    });
+  }
 
   protected allPosts = computed(() => {
     const notes = this.notePosts();

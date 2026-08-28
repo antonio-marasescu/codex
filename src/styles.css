@@ -1,7 +1,19 @@
 @import 'tailwindcss';
-@plugin "tailwindcss-primeui";
+@import 'vellum-lib/styles/index.css';
 @plugin "@tailwindcss/typography";
-@custom-variant dark (&:where(.codex-dark, .codex-dark *));
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  background:
+    radial-gradient(circle at 25% 12%, rgba(255, 0, 255, 0.15), transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(0, 255, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 0, 0.1), transparent 40%), var(--vlm-color-bg);
+  color: var(--vlm-color-text);
+  min-height: 100vh;
+}
 
 .material-icons-outlined {
   font-size: 20px !important;
@@ -31,18 +43,93 @@
   display: block;
 }
 
-html.codex-dark .shiki,
-html.codex-dark .shiki span {
+html.dark .shiki,
+html.dark .shiki span {
   color: var(--shiki-dark) !important;
   background-color: var(--shiki-dark-bg) !important;
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
+
 html .mermaid {
   background-color: var(--shiki-light-bg) !important;
 }
 
-html.codex-dark .mermaid {
+html.dark .mermaid {
   background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Mermaid diagram text colors for dark mode */
+html.dark .mermaid text,
+html.dark .mermaid .nodeLabel,
+html.dark .mermaid .edgeLabel,
+html.dark .mermaid .label,
+html.dark .mermaid .labelText,
+html.dark .mermaid .legend text {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
+
+html.dark .mermaid .node rect,
+html.dark .mermaid .node circle,
+html.dark .mermaid .node polygon {
+  stroke: #ffffff !important;
+}
+
+html.dark .mermaid .edgePath .path {
+  stroke: #888888 !important;
+}
+
+.search-dialog-panel {
+  @apply rounded-2xl shadow-2xl p-6 max-h-[80vh] overflow-auto;
+}
+
+.cdk-overlay-backdrop {
+  @apply bg-black/50;
+}
+
+/* Prose (markdown) styles for better readability */
+.prose {
+  color: var(--vlm-color-text) !important;
+}
+
+.prose *,
+.prose p,
+.prose li,
+.prose td,
+.prose th,
+.prose span,
+.prose div {
+  color: var(--vlm-color-text) !important;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: var(--vlm-color-text) !important;
+}
+
+.prose :where(strong):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: var(--vlm-color-text) !important;
+  font-weight: 600;
+}
+
+.prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: var(--vlm-color-primary-text) !important;
+}
+
+.prose :where(code):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: var(--vlm-color-text) !important;
+}
+
+.prose :where(pre):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  background-color: var(--vlm-color-bg-surface) !important;
+  color: var(--vlm-color-text) !important;
+}
+
+.prose :where(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: var(--vlm-color-text) !important;
+}
+
+.prose :where(em):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  color: var(--vlm-color-text) !important;
 }

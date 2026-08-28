@@ -1,53 +1,36 @@
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
-import { Button } from 'primeng/button';
-import { Ripple } from 'primeng/ripple';
+import { Button } from 'vellum-lib';
 import { AppTheme } from '../../types/theming/theming.types';
 import { BrowserApiService } from '../../services/browser-api.service';
-import { DarkModeSelector } from '../../config/theming/theming.config';
+import { VellumThemeService } from '../../services/vellum-theme.service';
 
 @Component({
   selector: 'app-theme-selector',
-  imports: [Button, Ripple],
+  imports: [Button],
   template: `
     @if (theme() === AppTheme.Light) {
-      <p-button
-        tabindex="0"
-        pRipple
-        [text]="true"
-        [rounded]="true"
-        severity="info"
-        (onClick)="onThemeChange(AppTheme.Dark)"
-      >
-        <ng-template #icon>
-          <span class="material-icons-outlined">dark_mode</span>
-        </ng-template>
-      </p-button>
+      <vlm-button [variant]="'text'" [theme]="'info'" (clicked)="onThemeChange(AppTheme.Dark)">
+        <span class="material-icons-outlined" preIcon>dark_mode</span>
+      </vlm-button>
     } @else {
-      <p-button
-        tabindex="0"
-        pRipple
-        [text]="true"
-        [rounded]="true"
-        severity="warn"
-        (onClick)="onThemeChange(AppTheme.Light)"
-      >
-        <ng-template #icon>
-          <span class="material-icons-outlined">light_mode</span>
-        </ng-template>
-      </p-button>
+      <vlm-button [variant]="'text'" [theme]="'warning'" (clicked)="onThemeChange(AppTheme.Light)">
+        <span class="material-icons-outlined" preIcon>light_mode</span>
+      </vlm-button>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeSelectorComponent {
   private readonly browserApiService = inject(BrowserApiService);
+  private readonly vellumThemeService = inject(VellumThemeService);
   protected theme = signal<AppTheme>(this.getInitialTheme());
   protected readonly AppTheme = AppTheme;
 
   constructor() {
     effect(() => {
       const current = this.theme();
-      this.setBodyThemeClass(current);
+      const vellumTheme = current === AppTheme.Dark ? 'dark' : 'light';
+      this.vellumThemeService.setTheme(vellumTheme);
       this.browserApiService.setLocalStorageItem('theme', current);
     });
   }
@@ -66,18 +49,6 @@ export class ThemeSelectorComponent {
     const prefersDark = this.browserApiService.matchMediaDocument(
       '(prefers-color-scheme: dark)'
     )?.matches;
-    return prefersDark ? AppTheme.Dark : AppTheme.Dark; // Default to dark mode
-  }
-
-  private setBodyThemeClass(theme: AppTheme) {
-    const darkClass = DarkModeSelector;
-    const html = this.browserApiService.queryDocument('html');
-    if (!html) return;
-
-    if (theme === AppTheme.Dark) {
-      html.classList.add(darkClass);
-    } else {
-      html.classList.remove(darkClass);
-    }
+    return prefersDark ? AppTheme.Dark : AppTheme.Light; // Default based on system preference or light mode
   }
 }

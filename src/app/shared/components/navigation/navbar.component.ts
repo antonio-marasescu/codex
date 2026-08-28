@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeSelectorComponent } from '../theming/theme-selector.component';
-import { Menubar } from 'primeng/menubar';
-import { Ripple } from 'primeng/ripple';
+import { Menu, MenuItem } from 'vellum-lib';
 import { NavigationItems } from '../../config/constants/navigation/navigation.constants';
 import { SearchPostsFieldComponent } from '../search/search-posts-field.component';
 import { NavbarItem } from '../../types/navigation/navbar.types';
@@ -11,53 +10,51 @@ import { NavbarItem } from '../../types/navigation/navbar.types';
   selector: 'app-navbar',
   imports: [
     ThemeSelectorComponent,
-    Menubar,
-    Ripple,
+    Menu,
+    MenuItem,
     RouterLink,
     RouterLinkActive,
     SearchPostsFieldComponent
   ],
   template: `
     <nav class="w-screen min-h-20 flex flex-row justify-center">
-      <p-menubar [model]="NavigationItems" class="rounded-full min-w-62 w-164 m-2">
-        <ng-template #start>
-          <span class="text-lg font-bold text-primary flex items-center gap-2 animate-fade-in">
-            <span
-              class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
-            >
-              Codex
-            </span>
-          </span>
-        </ng-template>
-        <ng-template #item let-item let-root="root" class="rounded-full">
-          <a
-            [routerLink]="item.routerLink"
-            routerLinkActive="active-link"
-            [routerLinkActiveOptions]="getRouterLinkActiveOptions(item)"
-            tabindex="0"
-            pRipple
-            class="flex items-center p-menubar-item-link text-base"
+      <div
+        class="rounded-full min-w-62 w-164 m-2 flex items-center gap-4 px-6 py-2 bg-[var(--vlm-color-bg-surface)]/90 backdrop-blur-md"
+      >
+        <!-- Start: Logo -->
+        <span class="text-lg font-bold text-primary flex items-center gap-2 animate-fade-in">
+          <span
+            class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
           >
-            @if (item.icon) {
-              <span class="material-icons-outlined">{{ item.icon }}</span>
-            }
-            <span>
-              {{ item.label }}
-            </span>
-            @if (item.items) {
-              <span class="material-icons-outlined ml-auto">{{
-                root ? 'expand_more' : 'chevron_right'
-              }}</span>
-            }
-          </a>
-        </ng-template>
-        <ng-template #end>
-          <div class="flex items-center gap-1">
-            <app-search-posts-field />
-            <app-theme-selector />
-          </div>
-        </ng-template>
-      </p-menubar>
+            Codex
+          </span>
+        </span>
+
+        <!-- Menu Items -->
+        <vlm-menu [vertical]="false" class="flex-1">
+          @for (item of NavigationItems; track item.label) {
+            <vlm-menu-item>
+              <a
+                [routerLink]="item.routerLink"
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="getRouterLinkActiveOptions(item)"
+                class="flex items-center gap-2 px-3 py-2 hover:opacity-80"
+              >
+                @if (item.icon) {
+                  <span class="material-icons-outlined">{{ item.icon }}</span>
+                }
+                <span>{{ item.label }}</span>
+              </a>
+            </vlm-menu-item>
+          }
+        </vlm-menu>
+
+        <!-- End: Actions -->
+        <div class="flex items-center gap-1">
+          <app-search-posts-field />
+          <app-theme-selector />
+        </div>
+      </div>
     </nav>
   `,
   styleUrl: 'navbar.component.css',

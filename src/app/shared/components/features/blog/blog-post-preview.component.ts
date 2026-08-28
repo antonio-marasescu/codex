@@ -2,38 +2,33 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { BlogPost } from '../../../types/content/blog.types';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { Card } from 'primeng/card';
-import { Tag } from 'primeng/tag';
+import { Chip } from 'vellum-lib';
 
 @Component({
   selector: 'app-blog-post-preview',
-  imports: [RouterLink, DatePipe, Card, Tag],
+  imports: [RouterLink, DatePipe, Chip],
   template: `
     <article class="w-full">
-      <p-card
-        class="p-2 md:p-6 rounded-lg shadow-lg bg-surface-100 dark:bg-surface-900/20 border border-surface-200 dark:border-surface-900"
+      <div
+        class="p-2 md:p-6 rounded-lg shadow-lg bg-[var(--vlm-color-bg-surface)]/80 backdrop-blur-sm border border-[var(--vlm-color-border)]"
       >
-        <ng-template #title>
-          <h3 class="text-2xl font-bold">
-            <a [routerLink]="['/blog', blogPost().slug]" class=" hover:opacity-80">
-              {{ blogPost().title }}
-            </a>
-          </h3>
-        </ng-template>
-        <ng-template #subtitle>
-          <span>{{ blogPost().publishedAt | date: 'mediumDate' }}</span>
-        </ng-template>
-        <div class="grid gap-8">
+        <h3 class="text-2xl font-bold">
+          <a [routerLink]="['/blogs', blogPost().slug]" class="hover:opacity-80">
+            {{ blogPost().title }}
+          </a>
+        </h3>
+        <div class="grid gap-4">
+          <span class="text-sm opacity-70">{{ blogPost().publishedAt | date: 'mediumDate' }}</span>
           <div>{{ blogPost().description }}</div>
           @if (blogPost().tags) {
             <div class="w-full flex flex-row-reverse gap-2">
               @for (tag of blogPost().tags; track tag) {
-                <p-tag>{{ tag }}</p-tag>
+                <vlm-chip [clickable]="false">{{ tag }}</vlm-chip>
               }
             </div>
           }
         </div>
-      </p-card>
+      </div>
     </article>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

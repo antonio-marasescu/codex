@@ -17,53 +17,60 @@
   },
   "private": true,
   "dependencies": {
-    "@analogjs/content": "^1.19.1",
-    "@analogjs/router": "^1.19.1",
-    "@angular/animations": "^20.0.0",
-    "@angular/common": "^20.0.0",
-    "@angular/compiler": "^20.0.0",
-    "@angular/core": "^20.0.0",
-    "@angular/forms": "^20.0.0",
-    "@angular/platform-browser": "^20.0.0",
-    "@angular/platform-browser-dynamic": "^20.0.0",
-    "@angular/platform-server": "^20.0.0",
-    "@angular/router": "^20.0.0",
-    "@primeuix/themes": "^1.2.1",
+    "@analogjs/content": "~2.7.1",
+    "@analogjs/router": "~2.7.1",
+    "@angular/animations": "^22.0.0",
+    "@angular/cdk": "^22.0.0",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@angular/platform-browser-dynamic": "^22.0.0",
+    "@angular/platform-server": "^22.0.0",
+    "@angular/router": "^22.0.0",
     "@tailwindcss/vite": "^4.1.4",
-    "marked": "^15.0.7",
+    "marked": "~15.0.7",
     "marked-shiki": "^1.1.0",
     "mermaid": "^11.8.1",
     "postcss": "^8.5.3",
-    "primeng": "^20.0.0-rc.1",
     "rxjs": "~7.8.0",
     "shiki": "^1.6.1",
     "tailwindcss": "^4.1.4",
-    "tailwindcss-primeui": "^0.6.1",
     "tslib": "^2.3.0",
+    "vellum-lib": "file:../vellum/dist/vellum-lib/vellum-lib-0.0.1.tgz",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@analogjs/platform": "^1.19.1",
-    "@analogjs/vite-plugin-angular": "^1.19.1",
-    "@analogjs/vitest-angular": "^1.19.1",
-    "@angular/build": "^20.0.0",
-    "@angular/cli": "^20.0.0",
-    "@angular/compiler-cli": "^20.0.0",
+    "@analogjs/platform": "~2.7.1",
+    "@analogjs/vite-plugin-angular": "~2.7.1",
+    "@analogjs/vitest-angular": "~2.7.1",
+    "@angular/build": "^22.0.0",
+    "@angular/cli": "^22.0.0",
+    "@angular/compiler-cli": "^22.0.0",
     "@tailwindcss/typography": "^0.5.16",
     "husky": "^9.1.7",
     "jsdom": "^22.0.0",
     "prettier": "3.6.2",
-    "typescript": "~5.8.0",
-    "vite": "^7.0.0",
+    "typescript": "~6.0.3",
+    "vite": "~8.2.1",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^3.0.0"
+    "vitest": "4.1.10"
   },
   "overrides": {
     "@analogjs/platform": {
-      "vite": "$vite"
-    }
+      "vite": "$vite",
+      "@babel/core": "^8.0.0"
+    },
+    "@babel/core": "^8.0.0"
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "allowScripts": {
+    "esbuild": true,
+    "lmdb": true,
+    "msgpackr-extract": true,
+    "@parcel/watcher": true
   }
 }
