@@ -84,11 +84,132 @@ It can hold one or more containers (usually Docker containers) that will share t
 
 **Pods** are scaled / down-scaled by creating new ones or removing them in their entirety (this includes all the container running inside of them).
 
+- [Pod Example](assets/pod-example.yaml)
+
 #### Replicas
 
-##### Replication Controller
+```mermaid
+flowchart TD
+    ReplicaSet --> Pod1[Pod]
+    ReplicaSet --> Pod2[Pod]
+    ReplicaSet --> Pod3[Pod]
+```
 
 ##### ReplicaSets
+
+A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time.
+It is composed of:
+
+- A selector that specifies how to identify pods it can acquire
+- The number of replicas
+- The pod template specification
+
+Afterward the ReplicaSet scales or downscales pods to reach its desired number.
+
+- [ReplicaSet Example](assets/replicaset-example.yaml)
+
+##### Replication Controller (deprecated)
+
+Legacy API for managing workloads that can scale horizontally. Superseded by the Deployment and ReplicaSet APIs.
+
+#### Deployments
+
+A Deployment is a higher-level concept that manages ReplicaSets to run an application workload. It provides declarative updates for Pods and ReplicaSets.
+You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate.
+
+```mermaid
+flowchart TD
+    Deployment --> ReplicaSet
+    ReplicaSet --> Pod1[Pod]
+    ReplicaSet --> Pod2[Pod]
+    ReplicaSet --> Pod3[Pod]
+```
+
+- [Deployment Example](assets/deployment-example.yaml)
+
+##### Rollout and Versioning
+
+Deployment Strategies:
+
+- Recreate: all existing Pods are terminated before new ones are created.
+- Rollover (`RollingUpdate`): Pods are gradually replaced while keeping the application available.
+
+Deployment status:
+
+- Progressing: a new ReplicaSet is being created or scaled.
+- Complete: all replicas were updated and are available.
+- Failed: the Deployment did not progress before its deadline.
+
+Updating a deployment:
+
+Changes to the Pod template, such as a new container image, trigger a rollout and create a new ReplicaSet.
+
+Revision Management:
+
+Each rollout creates a revision. Previous revisions can be inspected and used to roll back the Deployment.
+
+```sh
+kubectl set image deployment/<name> <container>=<image>:<tag>
+kubectl rollout status deployment/<name>
+kubectl rollout history deployment/<name>
+kubectl rollout undo deployment/<name>
+```
+
+> **Insight:** Deployments do not update Pods in place. They create a new ReplicaSet and gradually replace the old Pods. During a `RollingUpdate`, `maxSurge` limits extra Pods and `maxUnavailable` limits how many Pods may be unavailable.
+
+#### Services
+
+A Service provides a stable network endpoint for a group of Pods. It selects Pods by their labels and forwards traffic to them, allowing clients to reach an application without knowing its temporary Pod IPs.
+
+Service Types:
+
+- NodePort: exposes the Service through a port on every Node.
+- ClusterIP: exposes the Service only inside the cluster. This is the default type.
+- LoadBalancer: exposes the Service through an external load balancer when supported by the infrastructure.
+
+Services match a set of Pods using labels and selectors, a grouping primitive that allows logical operation on objects in Kubernetes
+
+##### NodePort
+
+- [NodePort Example](assets/notes/iac/nodeport-example.yaml)
+
+##### ClusterIP
+
+- [ClusterIP Example](assets/notes/iac/clusterip-example.yaml)
+
+##### LoadBalancer
+
+- [LoadBalancer Example](assets/notes/iac/loadbalancer-example.yaml)
+
+#### Networking
+
+Each Pod receives its own cluster IP address. Pods can communicate directly with other Pods, including across Nodes. Pod IPs are temporary and can change when Pods are replaced.
+
+Containers inside the same Pod share the Pod IP, network interfaces and port space. They communicate with each other through `localhost`.
+
+The Kubernetes networking model is implemented by a Container Network Interface (CNI) plugin such as Calico, Cilium or Flannel.
+
+##### DNS
+
+CoreDNS provides DNS-based service discovery inside the cluster. Pods normally reach a Service by name instead of its IP address.
+
+```text
+<service>.<namespace>.svc.cluster.local
+```
+
+Within the same namespace, the Service name alone can be used.
+
+##### NetworkPolicies
+
+NetworkPolicies control traffic entering (`ingress`) and leaving (`egress`) selected Pods. They can restrict communication by Pod, namespace, protocol and port.
+
+They are enforced only when supported by the installed CNI plugin. Without restrictive policies, Pod traffic is commonly allowed by default.
+
+#### Volumes
+
+- https://kubernetes.io/docs/concepts/storage/volumes/
+
+#### Kustomize
 
 ## Manifest File
 
@@ -164,6 +285,10 @@ There are several command line utilities available for use in kubernetes:
   ```shell
   kubectl get pods
   ```
+- List relevant data in the namespace
+  ```shell
+  kubectl get all
+  ```
 - List all pods in a specific namespace
   ```shell
   kubectl get pods -n <namespace>
@@ -183,6 +308,49 @@ There are several command line utilities available for use in kubernetes:
 - Execute a command inside a pod
   ```shell
   kubectl exec -it <pod-name> -n <namespace> -- <command>
+  ```
+- Apply for all configuration inside the current folder
+  ```shell
+  kubectl apply -f .
+  ```
+- Delete for all configuration inside the current folder
+  ```shell
+  kubectl delete -f .
+  ```
+- See what `kubectl apply` currently thinks was last applied:
+  ```shell
+  kubectl apply view-last-applied deployment/nginx
+  ```
+
+##### Managing deployments
+
+- How to see Deployments
+  ```shell
+  kubectl get deployments
+  ```
+- Trigger a rollout by hand (<deployment-resource-name>=nginx)
+  ```shell
+  kubectl set image deployment/nginx nginx=nginx:1.27
+  ```
+- See rollout status:
+  ```shell
+  kubectl rollout status deployment/<deployment-resource-name>
+  ```
+- See rollout history:
+  ```shell
+  kubectl rollout history deployment/<deployment-resource-name>
+  ```
+- Undo a deployment:
+  ```shell
+  kubectl rollout undo deployment/<deployment-resource-name>
+  ```
+- Undo a deployment to a specific revision:
+  ```shell
+  kubectl rollout undo deployment/<deployment-resource-name> --to-revision=<revision-number>
+  ```
+- How to scale a deployment ReplicaSet:
+  ```shell
+  kubectl scale deployment <deployment-resource-name> --replicas=5
   ```
 
 #### CTR
