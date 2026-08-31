@@ -171,15 +171,31 @@ Services match a set of Pods using labels and selectors, a grouping primitive th
 
 ##### NodePort
 
+A NodePort exposes the Service on the same static port of every Node. It is useful for simple external access during development or when an external load balancer is not available.
+
 - [NodePort Example](assets/notes/iac/nodeport-example.yaml)
 
 ##### ClusterIP
+
+A ClusterIP exposes the Service only inside the cluster. It is useful for communication between internal applications, such as a frontend connecting to a backend.
 
 - [ClusterIP Example](assets/notes/iac/clusterip-example.yaml)
 
 ##### LoadBalancer
 
+A LoadBalancer exposes the Service outside the cluster by requesting a load balancer from the underlying infrastructure. It is commonly used with cloud integrations such as AWS EKS or Azure AKS for public applications that need a single external entry point.
+
 - [LoadBalancer Example](assets/notes/iac/loadbalancer-example.yaml)
+
+#### Ingress
+
+An Ingress manages HTTP and HTTPS traffic entering the cluster and routes it to Services based on hostnames or URL paths. For example, `example.com/api` can route to an API Service while `example.com/web` routes to a frontend Service.
+
+Unlike a NodePort, which exposes a static port on every Node, an Ingress provides a single entry point for multiple web applications and can centralize TLS termination. It commonly routes traffic to ClusterIP Services, which then forward it to the matching Pods.
+
+An Ingress resource only defines the routing rules. An Ingress Controller, such as NGINX Ingress Controller or Traefik, must be installed in the cluster to enforce them.
+
+It is useful when applications need domain-based or path-based routing and HTTPS access without exposing each Service separately.
 
 #### Networking
 
@@ -210,6 +226,31 @@ They are enforced only when supported by the installed CNI plugin. Without restr
 - https://kubernetes.io/docs/concepts/storage/volumes/
 
 #### Kustomize
+
+Kustomize is a configuration management tool built into `kubectl`. It customizes Kubernetes manifests without modifying the original YAML files or using templates.
+
+A `kustomization.yaml` file lists the resources to include and the changes to apply. A common structure uses a reusable `base` configuration and `overlays` for environment-specific changes such as development or production.
+
+```text
+base/
+  deployment.yaml
+  service.yaml
+  kustomization.yaml
+overlays/
+  development/
+    kustomization.yaml
+  production/
+    kustomization.yaml
+```
+
+Render or apply a Kustomize configuration:
+
+```sh
+kubectl kustomize <directory>
+kubectl apply -k <directory>
+```
+
+It is useful when the same application is deployed to multiple environments with small differences, such as image tags, replica counts, namespaces or labels.
 
 ## Manifest File
 
