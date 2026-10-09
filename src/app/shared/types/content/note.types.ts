@@ -2,6 +2,7 @@ import { StandardContent } from './content.types';
 import { FormControl } from '@angular/forms';
 
 export enum NoteCategory {
+  Auth = 'Auth',
   Cloud = 'Cloud',
   AWS = 'AWS',
   Iac = 'Iac',
